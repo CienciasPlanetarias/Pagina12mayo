@@ -1,0 +1,1272 @@
+/*Este css se llama SLIDER-EVENTOS, es diferente al slider del index, en este no tiene boton ver-mas y tiene otros edits para q se vea mas texto*/
+/*solo funciona para la pagina-pestaña Eventos*/
+
+/*================== SLIDER EVENTOS ==================*/
+
+/* Contenedor principal del slider de eventos */
+.container-eventos {
+  position: relative;
+  width: 100%;
+  max-width: 95%;
+  background: transparent;
+  border-radius: 15px;
+  box-shadow: 0 30px 50px rgba(0,0,0,0.2);
+}
+
+/* Contenedor wrapper exclusivo del slider */
+.slider-wrapper-eventos {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  touch-action: pan-y;
+}
+
+/* Slide */
+.container-eventos .slide-eventos {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+/* Item dentro del slide */
+.slide-eventos .item-eventos {
+
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 20px;
+  background-position: 50% 50%;
+  background-size: cover;
+  display: inline-block;
+  transition: 0.5s;
+  
+}
+
+/* Items principales */
+.slide-eventos .item-eventos:nth-child(1),
+.slide-eventos .item-eventos:nth-child(2){
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ITEMS 3, 4, 5 y siguientes: 
+   En lugar de moverlos a la derecha (50% + 220px), 
+   los ponemos en el mismo lugar que el 2 pero invisibles. */
+   .slide-eventos .item-eventos:nth-child(2),
+.slide-eventos .item-eventos:nth-child(3),
+.slide-eventos .item-eventos:nth-child(4),
+.slide-eventos .item-eventos:nth-child(5),
+.slide-eventos .item-eventos:nth-child(n + 6) {
+  left: 0; /* Antes decía calc(50% + 220px...) */
+  top: 0;
+  transform: translate(0, 0); /* Sin desplazamiento */
+  opacity: 0; /* Los mantenemos invisibles hasta que pasen a ser el child(2) */
+  width: 100%;
+  height: 100%;
+}
+
+/* Contenido dentro del item */
+
+
+.item-eventos .content-eventos {
+  position: absolute;
+  /* Posicionamiento */
+  top: 50%; 
+  left: 80px;
+  transform: translateY(-50%); /* Este es el truco: siempre se centra respecto a su propia altura */
+  
+  /* Tamaño */
+  width: 450px; 
+  max-height: 80%; /* Evita que el texto toque los bordes superior/inferior */
+  
+  /* Flexbox para control interno */
+  display: none; /* Se cambia a 'flex' en el item activo */
+  flex-direction: column;
+  justify-content: center; 
+  
+  overflow: hidden; /* Corta lo que exceda el max-height por seguridad */
+  color: #F9FAFA;
+  z-index: 15;
+}
+
+/* Mostrar el segundo item por defecto */
+.slide-eventos .item-eventos:nth-child(1) .content-eventos{
+  display: flex;
+}
+
+/* Nombre */
+.content-eventos .name-eventos {
+  font-size: 48px;
+  color: #F5C518;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Oswald','sans-serif';
+  opacity: 0;
+  animation: animate-eventos 1s ease-in-out 1 forwards;
+  white-space: pre-line;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fecha */
+.content-eventos .fecha-eventos {
+  font-size: 20px;
+  color: #f9fafa;
+  margin-bottom: 8px;
+  font-family: 'Roboto', 'sans-serif';
+  opacity: 0;
+  animation: animate-eventos 1s ease-in-out 0.3s 1 forwards;
+}
+
+/* Descripción */
+.content-eventos .descripcion-eventos {
+  font-size: 16px;
+  color: #f9fafa;
+  margin-bottom: 20px;
+  font-family: 'Roboto', 'sans-serif';
+  line-height: 1.4;
+  opacity: 0;
+  animation: animate-eventos 1s ease-in-out 0.5s 1 forwards;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+/* Botón */
+.content-eventos button{
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  animation: animate-eventos 1s ease-in-out 0.6s 1 forwards;
+}
+
+/* Animación */
+@keyframes animate-eventos {
+  from{
+    opacity: 0;
+    transform: translate(0, 100px);
+    filter: blur(33px);
+  }
+  to{
+    opacity: 1;
+    transform: translate(0);
+    filter: blur(0);
+  }
+}
+
+/* Botones del slider */
+.button-eventos{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+}
+
+.button-eventos button{
+  width: 40px;
+  height: 35px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+  border: 1px solid #212529;
+  transition: 0.3s;
+  background: #212529;
+  color: #f9fafa;
+}
+
+.button-eventos button:hover{
+  background: #F5C518;
+  color: #212529;
+}
+
+
+
+/* ================== RESPONSIVE XS (0 – 575px) ================== */
+@media (max-width: 575px) {
+
+  .container-eventos {
+    width: 92%;
+    max-width: 92%;
+    margin: 0 auto;
+  }
+
+  .slider-wrapper-eventos {
+    overflow: hidden;
+  }
+
+
+  .container-eventos .slide-eventos {
+    height: 520px;
+  }
+
+  /* Slide visible */
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2) {
+    width: 100%;
+    height: 520px;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 15px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Slides ocultos */
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    width: 100%;
+    height: 520px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+
+  /* CAPA OSCURA */
+  .slide-eventos .item-eventos::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+  }
+
+  /* CONTENIDO */
+  .item-eventos .content-eventos {
+    left: 5%;
+    width: 85%;
+
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Mostrar slide activo */
+  .slide-eventos .item-eventos:nth-child(2) .content-eventos {
+    display: flex;
+  }
+
+  /* TITULO */
+  .content-eventos .name-eventos {
+    font-size: 28px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  /* FECHA */
+  .content-eventos .fecha-eventos {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  /* DESCRIPCION */
+  .content-eventos .descripcion-eventos {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  /* BOTONES */
+  .button-eventos {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    z-index: 10;
+  }
+
+  .button-eventos button {
+    width: 42px;
+    height: 38px;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+
+/* ================== EXTRA XS ================== */
+
+@media (max-width: 380px) {
+
+  .container-eventos .slide-eventos,
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2),
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    height: 470px;
+  }
+
+  .content-eventos .name-eventos {
+    font-size: 22px;
+  }
+
+  .content-eventos .fecha-eventos {
+    font-size: 13px;
+  }
+
+  .content-eventos .descripcion-eventos {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .item-eventos .content-eventos {
+    left: 15px;
+    right: 15px;
+
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/*====================== S ==================*/
+@media (min-width: 576px) and (max-width: 672px) {
+
+  .container-eventos {
+    width: 92%;
+    max-width: 92%;
+
+    margin: 0 auto;
+
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .container-eventos .slide-eventos {
+    height: 500px;
+    position: relative;
+  }
+
+  /* Slides visibles */
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform: none;
+
+    border-radius: 15px;
+
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Slides ocultos */
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+    transform: none;
+  }
+
+  /* CONTENIDO */
+  .item-eventos .content-eventos {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    left: 5%;
+
+    transform: translateY(-50%);
+
+    width: 85%;
+    max-height: 80%;
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide-eventos .item-eventos:nth-child(2) .content-eventos {
+    display: flex;
+  }
+
+  /* TITULO */
+  .content-eventos .name-eventos {
+    font-size: 34px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  /* FECHA */
+  .content-eventos .fecha-eventos {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /* DESCRIPCION */
+  .content-eventos .descripcion-eventos {
+    font-size: 14px;
+    line-height: 22px;
+    width: 80%;
+    max-width: 350px;
+  }
+
+  /* BOTONES */
+  .button-eventos {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    z-index: 10;
+  }
+
+  .button-eventos button {
+    width: 42px;
+    height: 38px;
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+
+/* ================== 673px a 767px ================== */
+@media (min-width: 673px) and (max-width: 767px) {
+
+  .container-eventos {
+    max-width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .container-eventos .slide-eventos {
+    height: 550px;
+    position: relative;
+  }
+
+  /* Slides visibles */
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform: none;
+
+    border-radius: 15px;
+
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Slides ocultos */
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+    transform: none;
+  }
+
+  /* Overlay */
+  .slide-eventos .item-eventos::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+  }
+
+  /* CONTENIDO */
+  .item-eventos .content-eventos {
+  position: absolute;
+  z-index: 2;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 85%;
+  max-height: 80%;
+
+  display: none;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+
+  text-align: left;
+}
+
+  .slide-eventos .item-eventos:nth-child(2) .content-eventos {
+    display: flex;
+  }
+
+  /* TITULO */
+  .content-eventos .name-eventos {
+    font-size: 40px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  /* FECHA */
+  .content-eventos .fecha-eventos {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  /* DESCRIPCION */
+  .content-eventos .descripcion-eventos {
+    font-size: 15px;
+    line-height: 24px;
+    width: 75%;
+    max-width: 400px;
+  }
+
+  /* BOTONES */
+  .button-eventos {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    z-index: 10;
+  }
+
+  .button-eventos button {
+    width: 44px;
+    height: 40px;
+    font-size: 15px;
+    margin: 0;
+  }
+}
+
+/* ================== M (Medium) ================== */
+@media (min-width: 768px) and (max-width: 900px) {
+
+  .container-eventos {
+    max-width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .container-eventos .slide-eventos {
+    height: 500px;
+    position: relative;
+  }
+
+  /* Slides visibles */
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform: none;
+
+    border-radius: 15px;
+
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Slides ocultos */
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+    transform: none;
+  }
+
+  /* CONTENIDO */
+  .item-eventos .content-eventos {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 80%;
+    max-height: 80%;
+
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+
+    text-align: left;
+  }
+
+  .slide-eventos .item-eventos:nth-child(2) .content-eventos {
+    display: flex;
+  }
+
+  /* TITULO */
+  .content-eventos .name-eventos {
+    font-size: 38px;
+    line-height: 1.1;
+    margin-bottom: 15px;
+  }
+
+  /* FECHA */
+  .content-eventos .fecha-eventos {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+
+  /* DESCRIPCION */
+  .content-eventos .descripcion-eventos {
+    font-size: 14px;
+    line-height: 24px;
+
+    width: 80%;
+    max-width: 450px;
+    margin: 10px 0 20px 0;
+  }
+
+  /* BOTONES */
+  .button-eventos {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    z-index: 10;
+  }
+
+  .button-eventos button {
+    width: 44px;
+    height: 40px;
+    font-size: 15px;
+    margin: 0;
+  }
+}
+
+
+
+/* ================== M (901px a 991px) ================== */
+@media (min-width: 901px) and (max-width: 991px) {
+
+  .container-eventos {
+  
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .container-eventos .slide-eventos {
+    height: 550px;
+    position: relative;
+  }
+
+  /* Slides visibles */
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform: none;
+
+    border-radius: 15px;
+
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Slides ocultos */
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+    transform: none;
+  }
+
+  /* CONTENIDO */
+  .item-eventos .content-eventos {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 75%;
+    max-height: 80%;
+
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+
+    text-align: left;
+  }
+
+  .slide-eventos .item-eventos:nth-child(2) .content-eventos {
+    display: flex;
+  }
+
+  /* TITULO */
+  .content-eventos .name-eventos {
+    font-size: 44px;
+    line-height: 1.1;
+    margin-bottom: 15px;
+  }
+
+  /* FECHA */
+  .content-eventos .fecha-eventos {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  /* DESCRIPCION */
+  .content-eventos .descripcion-eventos {
+    font-size: 16px;
+    line-height: 26px;
+
+    width: 80%;
+    max-width: 500px;
+
+
+  }
+
+  /* BOTONES */
+  .button-eventos {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    z-index: 10;
+  }
+
+  .button-eventos button {
+    width: 46px;
+    height: 42px;
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+
+
+
+
+/* ================== L (992px a 1099px) ================== */
+@media (min-width: 992px) and (max-width: 1099px) {
+
+  .container-eventos {
+
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .container-eventos .slide-eventos {
+    height: 500px;
+    min-height: 70vh;
+    max-height: 90vh;
+
+    position: relative;
+  }
+
+  /* Slides visibles */
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform: none;
+
+    border-radius: 15px;
+
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Slides ocultos */
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+    transform: none;
+  }
+
+  /* CONTENIDO */
+  .item-eventos .content-eventos {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 70%;
+    max-height: 80%;
+
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+
+    text-align: left;
+  }
+
+  .slide-eventos .item-eventos:nth-child(2) .content-eventos {
+    display: flex;
+  }
+
+  /* TITULO */
+  .content-eventos .name-eventos {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 15px;
+  }
+
+  /* FECHA */
+  .content-eventos .fecha-eventos {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  /* DESCRIPCION */
+  .content-eventos .descripcion-eventos {
+    font-size: 0.9rem;
+    line-height: 1.4;
+
+    width: 80%;
+    max-width: 520px;
+
+ 
+  }
+
+  /* BOTONES */
+  .button-eventos {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    z-index: 10;
+  }
+
+  .button-eventos button {
+    width: 46px;
+    height: 42px;
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+
+
+/* ================== L (1100px a 1199px) ================== */
+@media (min-width: 1100px) and (max-width: 1199px) {
+
+  .container-eventos {
+   
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .container-eventos .slide-eventos {
+    height: 650px;
+
+    position: relative;
+  }
+
+  /* Slides visibles */
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform: none;
+
+    border-radius: 15px;
+
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Slides ocultos */
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+    transform: none;
+  }
+
+  /* CONTENIDO */
+  .item-eventos .content-eventos {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 68%;
+    max-height: 80%;
+
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+
+    text-align: left;
+  }
+
+  .slide-eventos .item-eventos:nth-child(2) .content-eventos {
+    display: flex;
+  }
+
+  /* TITULO */
+  .content-eventos .name-eventos {
+    font-size: 2.3rem;
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+
+  /* FECHA */
+  .content-eventos .fecha-eventos {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+  }
+
+  /* DESCRIPCION */
+  .content-eventos .descripcion-eventos {
+    font-size: 1rem;
+    line-height: 1.5;
+
+    width: 80%;
+    max-width: 580px;
+
+  
+  }
+
+  /* BOTONES */
+  .button-eventos {
+    position: absolute;
+    bottom: 35px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    z-index: 10;
+  }
+
+  .button-eventos button {
+    width: 48px;
+    height: 44px;
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+
+/* ================== XL (1200px a 1399px) ================== */
+@media (min-width: 1200px) and (max-width: 1399px) {
+
+  .container-eventos {
+    
+    margin: 0 auto;
+
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .container-eventos .slide-eventos {
+    height: 700px;
+
+    position: relative;
+  }
+
+  /* Slides visibles */
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform: none;
+
+    border-radius: 15px;
+
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Slides ocultos */
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+    transform: none;
+  }
+
+  /* CONTENIDO */
+  .item-eventos .content-eventos {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 65%;
+    max-height: 80%;
+
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+
+    text-align: left;
+  }
+
+  .slide-eventos .item-eventos:nth-child(2) .content-eventos {
+    display: flex;
+  }
+
+  /* TITULO */
+  .content-eventos .name-eventos {
+    font-size: 2.7rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  /* FECHA */
+  .content-eventos .fecha-eventos {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  /* DESCRIPCION */
+  .content-eventos .descripcion-eventos {
+    font-size: 1.05rem;
+    line-height: 1.6;
+
+    width: 80%;
+    max-width: 650px;
+
+  }
+
+  /* BOTONES */
+  .button-eventos {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    z-index: 10;
+  }
+
+  .button-eventos button {
+    width: 50px;
+    height: 46px;
+    font-size: 17px;
+    margin: 0;
+  }
+}
+
+
+/* ================== XXL (1400px en adelante) ================== */
+@media (min-width: 1400px) {
+
+  .container-eventos {
+    margin: 0 auto;
+
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .container-eventos .slide-eventos {
+    height: 800px;
+
+    position: relative;
+  }
+
+  /* Slides visibles */
+  .slide-eventos .item-eventos:nth-child(1),
+  .slide-eventos .item-eventos:nth-child(2) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    transform: none;
+
+    border-radius: 15px;
+
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Slides ocultos */
+  .slide-eventos .item-eventos:nth-child(n + 3) {
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    opacity: 0;
+    transform: none;
+  }
+
+  /* CONTENIDO */
+  .item-eventos .content-eventos {
+    position: absolute;
+    z-index: 2;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 60%;
+    max-height: 80%;
+
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+
+    text-align: left;
+  }
+
+  .slide-eventos .item-eventos:nth-child(2) .content-eventos {
+    display: flex;
+  }
+
+  /* TITULO */
+  .content-eventos .name-eventos {
+    font-size: 3.2rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  /* FECHA */
+  .content-eventos .fecha-eventos {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+
+  /* DESCRIPCION */
+  .content-eventos .descripcion-eventos {
+    font-size: 1.1rem;
+    line-height: 1.7;
+
+    width: 80%;
+    max-width: 750px;
+
+  }
+
+  /* BOTONES */
+  .button-eventos {
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    z-index: 10;
+  }
+
+  .button-eventos button {
+    width: 54px;
+    height: 48px;
+    font-size: 18px;
+    margin: 0;
+  }
+}

@@ -1,0 +1,439 @@
+/* creditos.css */
+
+/* ================= HERO ================= */
+
+.hero-dev{
+    position: relative;
+
+    width: 100%;
+    min-height: 70vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 20px;
+
+    background-image: url("../img/fondo-dev.jpg");
+    background-size: cover;
+    background-position: center;
+
+    overflow: hidden;
+}
+
+.overlay-dev{
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0,0,0,0.65);
+}
+
+.hero-content-dev{
+    position: relative;
+    z-index: 2;
+
+    max-width: 800px;
+
+    text-align: center;
+}
+
+.dev-small{
+    color: #F5C518;
+
+    font-size: 1rem;
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+
+    text-transform: uppercase;
+}
+
+.dev-title{
+    font-size: 4rem;
+    font-family: 'Oswald', sans-serif;
+
+    margin-bottom: 20px;
+
+    color: #F5C518;
+}
+
+.dev-description{
+    font-size: 1.2rem;
+    line-height: 1.7;
+
+    color: #d9d9d9;
+}
+
+/* ================= SECCIONES ================= */
+
+.container-dev{
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+.about-dev,
+.tech-dev,
+.contact-dev{
+    padding: 90px 0;
+}
+
+.about-dev h2,
+.tech-dev h2,
+.contact-dev h2{
+    font-size: 2.2rem;
+
+    margin-bottom: 25px;
+
+    font-family: 'Oswald', sans-serif;
+
+    color: #F5C518;
+}
+
+.about-dev p,
+.contact-dev p{
+    font-size: 1rem;
+    line-height: 1.8;
+
+    max-width: 800px;
+
+    margin-bottom: 20px;
+
+    color: #d0d0d0;
+}
+
+/* ================= TECNOLOGIAS ================= */
+.tech-dev{
+    padding: 80px 20px;
+}
+
+.tech-grid{
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+
+    margin-top: 40px;
+}
+
+.tech-card{
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 18px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    backdrop-filter: blur(6px);
+
+    transition: 0.3s ease;
+}
+
+.tech-card:hover{
+    transform: translateY(-6px);
+}
+
+.tech-card i{
+
+    font-size: 42px;
+
+    margin-bottom: 18px;
+
+    color: #F5C518;
+}
+
+.tech-card h3{
+
+    margin-bottom: 12px;
+
+    font-size: 22px;
+}
+
+.tech-card p{
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    opacity: 0.85;
+}
+
+/* ================= CONTACTO ================= */
+
+.contact-links{
+    display: flex;
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+.contact-links a{
+    text-decoration: none;
+
+    padding: 12px 22px;
+
+    border-radius: 8px;
+
+    background: #F5C518;
+
+    color: #212529;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.contact-links a:hover{
+    background: #212529;
+    color: #F5C518;
+}
+
+.project-year{
+    margin-top: 18px;
+    font-size: 14px;
+    opacity: 1;
+    letter-spacing: 1px;
+}
+
+/* ===================================================== */
+/* ======================= XS =========================== */
+/* ===================================================== */
+
+@media (max-width: 576px){
+
+    .hero-dev{
+        min-height: 60vh;
+        padding: 50px 18px;
+    }
+
+    .hero-content-dev{
+        max-width: 100%;
+    }
+
+    .dev-small{
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    .dev-title{
+        font-size: 2.2rem;
+        line-height: 1.1;
+    }
+
+    .dev-description{
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .about-dev,
+    .tech-dev,
+    .contact-dev{
+        padding: 60px 0;
+    }
+
+    .about-dev h2,
+    .tech-dev h2,
+    .contact-dev h2{
+        font-size: 1.7rem;
+    }
+
+    .about-dev p,
+    .contact-dev p{
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .tech-grid{
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .tech-card{
+        padding: 24px 18px;
+    }
+
+    .tech-card i{
+        font-size: 34px;
+    }
+
+    .tech-card h3{
+        font-size: 18px;
+    }
+
+    .tech-card p{
+        font-size: 14px;
+    }
+
+    .contact-links{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .contact-links a{
+        text-align: center;
+        width: 100%;
+    }
+
+    .project-year{
+        font-size: 12px;
+    }
+}
+
+
+/* ===================================================== */
+/* ======================== S =========================== */
+/* ===================================================== */
+
+@media (min-width: 577px) and (max-width: 767px){
+
+    .hero-dev{
+        min-height: 65vh;
+        padding: 60px 25px;
+    }
+
+    .dev-title{
+        font-size: 3rem;
+    }
+
+    .dev-description{
+        font-size: 1rem;
+    }
+
+    .about-dev h2,
+    .tech-dev h2,
+    .contact-dev h2{
+        font-size: 1.9rem;
+    }
+
+    .tech-grid{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .tech-card{
+        padding: 26px 20px;
+    }
+
+    .contact-links{
+        gap: 16px;
+    }
+}
+
+
+/* ===================================================== */
+/* ======================== M =========================== */
+/* ===================================================== */
+
+@media (min-width: 768px) and (max-width: 991px){
+
+    .hero-dev{
+        min-height: 68vh;
+    }
+
+    .dev-title{
+        font-size: 3.4rem;
+    }
+
+    .dev-description{
+        font-size: 1.05rem;
+    }
+
+    .tech-grid{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .tech-card{
+        padding: 28px 22px;
+    }
+
+    .tech-card i{
+        font-size: 38px;
+    }
+}
+
+
+/* ===================================================== */
+/* ======================== L =========================== */
+/* ===================================================== */
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+    .hero-dev{
+        min-height: 70vh;
+    }
+
+    .dev-title{
+        font-size: 3.8rem;
+    }
+
+    .dev-description{
+        font-size: 1.1rem;
+    }
+
+    .tech-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* ===================================================== */
+/* ======================== XL ========================== */
+/* ===================================================== */
+
+@media (min-width: 1200px) and (max-width: 1399px){
+    .tech-grid{
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+        margin: 40px auto 0;
+    }
+
+    .hero-content-dev{
+        max-width: 850px;
+    }
+
+    .dev-title{
+        font-size: 4.2rem;
+    }
+
+    .dev-description{
+        font-size: 1.15rem;
+    }
+}
+
+
+/* ===================================================== */
+/* ======================= XXL ========================== */
+/* ===================================================== */
+
+@media (min-width: 1400px){
+
+    .tech-grid{
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1100px;
+        margin: 40px auto 0;
+    }
+    .hero-content-dev{
+        max-width: 950px;
+    }
+
+    .dev-title{
+        font-size: 4.5rem;
+    }
+
+    .dev-description{
+        font-size: 1.2rem;
+    }
+
+    .tech-grid{
+        gap: 30px;
+    }
+}

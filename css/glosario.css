@@ -1,0 +1,410 @@
+/* ==============================
+   CONTENEDOR PRINCIPAL
+============================== */
+.container-glossary {
+  max-width: 650px;         /* ancho máximo */
+  margin: 0 auto;           /* centrado horizontal */
+  padding: 1.5rem;
+  background-color: transparent; /* fondo por defecto */
+  border-radius: 0;         /* sin bordes redondeados */
+  box-sizing: border-box;
+}
+
+/* ==============================
+   TÍTULO PRINCIPAL
+============================== */
+.container-glossary h2 {
+  font-size: 3rem;
+  font-family: 'Oswald', 'sans-serif';
+  font-weight: bold;
+  color: #f9fafa;              /* negro por defecto */
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px gray, 0 0 20px #142b44, 0 0 30px #fff; /* efecto de brillo */
+}
+
+/* ==============================
+   ÍNDICE ALFABÉTICO
+============================== */
+#alphabet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+#alphabet button {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+  border: none;                  /* sin borde */
+  background-color: #f9fafa;     /* gris claro */
+  color: #000;                   /* texto negro */
+  cursor: pointer;
+  font-family: sans-serif;
+  transition: background-color 0.2s ease;
+}
+
+#alphabet button:hover {
+  background-color: #3498DB;        /* negro */
+  color: #f9fafa;                   /* blanco */
+}
+
+/* ==============================
+   BOTÓN "VER TODOS"
+============================== */
+#showAll {
+  display: block;
+  margin: 0 auto 1rem auto;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 7px;
+  background-color: #f5c518;     /* amarillo */
+  color: #000;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#showAll:hover {
+  background-color: #142b44;        /* negro */
+  color: #f9fafa;                   /* blanco */
+}
+
+/* ==============================
+   ACORDEÓN: ITEM GENERAL
+============================== */
+#glossaryAccordion .accordion-item {
+  border: none;              /* sin borde */
+  margin-bottom: 0.5rem;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: 550px;
+
+}
+
+/* ==============================
+   BOTÓN DE CADA TÉRMINO
+============================== */
+#glossaryAccordion .accordion-button {
+  background-color: #f9fafa; /* fondo gris claro */
+  color: #000;               /* texto negro */
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border: none;
+  box-shadow: none;
+  border-radius: 7px;
+}
+
+#glossaryAccordion .accordion-button:not(.collapsed) {
+  background-color: #000;    /* fondo negro al abrir */
+  color: #f9fafa;               /* texto blanco */
+  box-shadow: none;
+}
+
+#glossaryAccordion .accordion-button:focus {
+  box-shadow: none;          /* sin resaltado azul */
+  border: none;
+  outline: none;
+}
+
+/* ==============================
+   CUERPO DEL ACORDEÓN
+============================== */
+#glossaryAccordion .accordion-body {
+  background-color: #000000;     /* fondo negro */
+  color: #f9fafa;                /* texto blanco */
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding: 1rem;
+  border: none;
+  box-shadow: none;
+  border-radius: 7px;
+}
+
+
+/* ==============================
+   ICONO DE LA FLECHA
+============================== */
+#glossaryAccordion .accordion-button::after {
+  background-image: none;     /* le quito el ícono default de Bootstrap */
+  content: "✦"; /* Cerrado */ 
+  font-size: 1rem;
+  color: #000;                /* color de la flecha en cerrado */
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+/* Cuando está desplegado */
+#glossaryAccordion .accordion-button:not(.collapsed)::after {
+  content: "✧";  /* Abierto */
+  color: #f5c518;                /* color de la flecha en abierto */
+  transform: rotate(0deg);    /* opcional: si querés animar, poné otro valor */
+}
+
+
+/* Separador astronómico */
+.astro-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5c518;
+  font-size: 1.3rem;   /* tamaño del símbolo */
+  margin: 1rem 0;
+  text-shadow: 0 0 5px #fff, 0 0 15px #f5c518;
+}
+
+.astro-divider::before,
+.astro-divider::after {
+  content: "";
+  flex: 1;                    /* ocupa todo el ancho disponible */
+  border-bottom: 1px solid #f5c518;
+  margin: 0 0.8rem;            /* espacio entre línea y símbolo */
+}
+
+
+
+/* ==============================
+   RESPONSIVE 
+============================== */
+/* ===============================
+   XS mini (<349px)
+   =============================== */
+@media (max-width: 349px) {
+  .container-glossary h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #alphabet button {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.35rem;
+  }
+
+  #showAll {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  #glossaryAccordion .accordion-button {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  #glossaryAccordion .accordion-body {
+    font-size: 0.75rem;
+    padding: 0.6rem;
+  }
+
+  .astro-divider {
+    font-size: 0.6rem;
+    margin: 0.15rem 0;
+  }
+}
+
+/* ===============================
+   XS normal (≥350px y <576px)
+   =============================== */
+@media (min-width: 350px) and (max-width: 575.98px) {
+  .container-glossary h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  #alphabet button {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  #showAll {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  #glossaryAccordion .accordion-button {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  #glossaryAccordion .accordion-body {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+
+  .astro-divider {
+    font-size: 0.75rem;
+    margin: 0.3rem 0;
+  }
+}
+
+
+/* ===============================
+   S (<576px y ≥768px)
+   =============================== */
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .container-glossary h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  #alphabet button {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  #showAll {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  #glossaryAccordion .accordion-button {
+    font-size: 0.9rem;
+    padding: 0.65rem 0.9rem;
+  }
+
+  #glossaryAccordion .accordion-body {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+
+  .astro-divider {
+    font-size: 0.85rem;
+    margin: 0.4rem 0;
+  }
+}
+
+/* ===============================
+   M (≥768px y <992px)
+   =============================== */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+  .container-glossary {
+    max-width: 550px;        /* un poco más estrecho que L */
+    padding: 1rem;
+  }
+
+  .container-glossary h2 {
+    font-size: 3rem;         /* ligeramente más pequeño */
+    margin-bottom: 1.2rem;
+  }
+
+  #alphabet button {
+    font-size: 0.9rem;
+    padding: 0.20rem 0.45rem;
+  }
+
+  #showAll {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.8rem;
+    margin: 0 auto 1rem auto;
+  }
+
+  #glossaryAccordion .accordion-button {
+    margin: 0;                 /* sin margen extra */
+    padding: 0.9rem 1rem;      /* más compacto */
+    line-height: 1.2;
+    border-radius: 7px;        /* mantenemos bordes redondeados */
+  }
+
+  #glossaryAccordion .accordion-body {
+    padding: 0.9rem 1.2rem;      /* contenido menos alto */
+    border-radius: 7px;        /* bordes redondeados igual */
+    font-size: 1rem;
+  }
+
+  #glossaryAccordion .accordion-item {
+    max-width: 430px;
+    margin: 0 auto 0.65rem auto;
+  }
+
+  .astro-divider {
+    font-size: 0.95rem;
+    margin: 0.45rem 0;
+  }
+
+}
+
+
+/* ===============================
+   L (≥992px y <1200px)
+   =============================== */
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+  .container-glossary {
+    max-width: 650px;        /* más ancho para pantallas grandes */
+    padding: 1.3rem;
+  }
+
+  .container-glossary h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #alphabet button {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  #showAll {
+    font-size: 1rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  #glossaryAccordion .accordion-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.1rem;
+  }
+
+  #glossaryAccordion .accordion-body {
+    font-size: 1rem;
+    padding: 1.15rem;
+  }
+
+  #glossaryAccordion .accordion-item {
+    max-width: 470px;        /* acordeón un poco más amplio */
+    margin: 0 auto 0.75rem auto;
+  }
+
+  .astro-divider {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  #showAll {
+    font-size: 0.9rem;            /* texto un poco más grande */
+    padding: 0.4rem 0.9rem;       /* más espacio interno */
+    margin: 0 auto 1.3rem auto; /* más espacio inferior */
+  }
+
+}
+
+
+/* ===============================
+   XL (≥1200px)
+   =============================== */
+@media (min-width: 1200px) {
+  #glossaryAccordion .accordion-item {
+    max-width: 550px;
+    margin: 0 auto 0.35rem auto; /* espacio reducido entre items */
+  }
+
+  #glossaryAccordion .accordion-button {
+    margin: 0;                 /* sin margen extra */
+    padding: 1rem 1.2rem;      /* más compacto */
+    line-height: 1.2;
+    border-radius: 7px;        /* mantenemos bordes redondeados */
+  }
+
+  #glossaryAccordion .accordion-body {
+    padding: 1.2rem 1.4rem;      /* contenido menos alto */
+    border-radius: 7px;        /* bordes redondeados igual */
+    font-size: 1rem;
+  }
+}
+
+
+

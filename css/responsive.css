@@ -1,0 +1,356 @@
+/*ACA TENGO LOS MEDIAS, TODOS LOS TAMAÑOS RESPONSIVOS DE TODO EL PROYECTO*/
+
+/* ================== XS (extra small) ================== */
+/* Esto me abacar tamaño 0 – 575px */
+@media (max-width: 575px) {
+
+  /* ================== HEADER ================== */
+  .header-content {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .header-content .office-name { font-size: 1.5rem; }
+  .header-content .logo img { height: 50px; }
+
+/* ================== NAVBAR CORREGIDO ================== */
+  #main-nav .nav-bar {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; /* CAMBIO CLAVE: Prohibido bajar elementos */
+    justify-content: space-evenly !important; /* Distribuye parejo */
+    gap: 2px; /* Reducimos el espacio entre botones */
+    padding: 0 5px;
+  }
+
+  #main-nav .navItem {
+    font-size: 0.8rem !important; /* Bajamos un poco de 0.9 a 0.8 para asegurar espacio */
+    padding: 10px 2px !important; /* Menos espacio a los costados */
+    white-space: nowrap !important;
+    flex-shrink: 1; /* Permite que los botones se achiquen un poquito si es necesario */
+  }
+  
+  /* ================== HERO SECTION-INDEX================== */
+  #hero-section {
+    padding: 8px; /* menos espacio lateral para móviles */
+  }
+
+  .hero-title {
+    font-size: 1.8rem;  /* más chica que 3rem */
+    margin-bottom: 10px;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;    /* más chica que 1.5rem */
+  }
+
+
+
+  /* ================== TABLA / CALENDARIO / SLIDER ================== */
+  .table { font-size: 0.75rem; }
+  #calendar { font-size: 0.65rem; }
+  .carousel-item .card { width: 90%; }
+
+  /* ================== FOOTER ================== */
+  .footer-container {
+    flex-direction: row;          /* textos arriba, logo debajo */
+    justify-content: space-between;
+    align-items: center;             /* centra verticalmente los elementos */
+    gap: 10px;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+  .footer-text {
+    text-align: left;              /* centrado */
+    flex: 1;
+  }
+  .footer-text p {
+    font-size: 0.7rem;
+    margin: 0;
+    line-height: 1.4;
+    text-indent: 0;
+    width: 100%;
+  }
+  .footer-right {
+    margin-top: 5px;
+    align-items: center;
+  }
+  .footer-logo {
+    max-height: 30px;
+    width: auto;
+  }
+
+  /* ================== BOTÓN VOLVER ARRIBA ================== */
+  #back-to-top-btn {
+    bottom: 75px;
+    right: 15px;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
+
+/* ================== S (Small) ================== */
+
+/* Esto abarca solo tamaño SM */
+@media (min-width: 576px) and (max-width: 767px){
+  /* ================== HEADER ================== */
+  .header-content { flex-direction: column; gap: 15px; }
+  .header-content .office-name { font-size: 1.8rem; }
+  .header-content .logo img { height: 60px; }
+
+  /* ================== NAVBAR ================== */
+  #main-nav .nav-bar { flex-direction: row; gap: 10px; }
+
+  /* ================== TABLA / CALENDARIO / SLIDER ================== */
+  .table { font-size: 0.8rem; }
+  #calendar { max-width: 95%; font-size: 0.7rem; }
+  .carousel-item .card { width: 70%; }
+
+  /* ================== FOOTER ================== */
+  .footer-container { flex-direction: row; align-items: center; text-align:left; gap: 10px; }
+  .footer-text p { font-size: 0.8rem; }
+  .footer-logo { max-height: 35px; }
+
+  /* ================== BOTÓN VOLVER ARRIBA ================== */
+  #back-to-top-btn { bottom: 75px; right: 10px; padding: 8px 12px; font-size: 16px; }
+
+  /* ================== HERO SECTION ================== */
+  #hero-section { padding: 10px; }
+  .hero-title { font-size: 2.2rem; margin-bottom: 12px; }
+  .hero-subtitle { font-size: 1.2rem; }
+}
+
+
+/* ================== M (Medium) ================== */
+
+/* Esto abarca solo tamaño M (MD) */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  /* ================== HEADER ================== */
+  .header-content { gap: 20px; }
+  .header-content .office-name { font-size: 2rem; }
+  .header-content .logo img { height: 70px; }
+
+  /* ================== NAVBAR ================== */
+  #main-nav .nav-bar { flex-wrap: wrap; gap: 15px; }
+
+  /* ================== TABLA / CALENDARIO / SLIDER ================== */
+  .table { font-size: 0.85rem; }
+  #calendar { max-width: 90%; font-size: 0.75rem; }
+  .fc .fc-daygrid-event { font-size: 0.6rem; }
+  .carousel-item .card { width: 50%; }
+
+  /* ================== HERO SECTION ================== */
+  #hero-section { padding: 12px; }
+  .hero-title { font-size: 2.5rem; margin-bottom: 12px; }
+  .hero-subtitle { font-size: 1.3rem; }
+
+/* ================== FOOTER ================== */
+.footer-container {
+    flex-direction: row;           /* texto a la izquierda, logo a la derecha */
+    justify-content: space-between;/* separa horizontalmente */
+    align-items: center;           /* centra verticalmente */
+    text-align: left;
+    gap: 2px;                     /* separación entre texto y logo */
+    padding: 2px 6px;            /* espacio interno más uniforme */
+}
+
+.footer-text p {
+    font-size: 0.9rem;             /* un poquito más grande para mejor lectura */
+    margin: 0;
+    line-height: 1.5;
+    max-width: 100%;                /* evita que el texto se estire demasiado */
+}
+
+.footer-logo {
+    max-height: 45px;              /* ligeramente más grande para balancear */
+    width: auto;
+}
+
+
+/* ================== BOTÓN VOLVER ARRIBA ================== */
+#back-to-top-btn {
+    bottom: 110px;                  /* más arriba para no tapar el footer */
+    right: 15px;                    /* separación más cómoda desde el borde derecho */
+    padding: 7px 12px;            /* tamaño cómodo de clic */
+    font-size: 16px;
+}
+
+}
+
+/* ================== L (Large) ================== */
+
+/* 992px – 1199px */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+  /* ================== HEADER ================== */
+  .header-content { gap: 25px; }
+  .header-content .office-name { font-size: 2.5rem; }
+  .header-content .logo img { height: 80px; }
+
+  /* ================== NAVBAR ================== */
+  #main-nav .nav-bar { flex-wrap: nowrap; gap: 20px; }
+
+  /* ================== TABLA / CALENDARIO / SLIDER ================== */
+  .table { max-width: 100%; font-size: 0.9rem; }
+  #calendar { max-width: 75%; font-size: 0.8rem; }
+  .fc .fc-daygrid-event { font-size: 0.65rem; }
+  #myCarousel { max-width: 1199px; }
+  .carousel-item .card { width: 35%; }
+
+  /* ================== HERO SECTION ================== */
+  #hero-section { padding: 15px; }
+  .hero-title { font-size: 3rem; margin-bottom: 15px; }
+  .hero-subtitle { font-size: 1.5rem; }
+  
+/* ================== FOOTER ================== */
+.footer-container {
+    flex-direction: row;           /* texto a la izquierda, logo a la derecha */
+    justify-content: space-between;/* separa horizontalmente */
+    align-items: left;           /* centra verticalmente */
+    text-align: left;
+    gap: 2px;                     /* separación entre texto y logo */
+    padding: 3px 6px;            /* espacio interno más uniforme */
+}
+
+.footer-text p {
+    font-size: 0.9rem;             /* un poquito más grande para mejor lectura */
+    margin: 0;
+    line-height: 1.5;
+    max-width: 100%;                /* evita que el texto se estire demasiado */
+}
+
+.footer-logo {
+    max-height: 55px;              /* ligeramente más grande para balancear */
+    width: auto;
+}
+
+/* ================== BOTÓN VOLVER ARRIBA ================== */
+#back-to-top-btn {
+    bottom: 110px;                  /* más arriba para no tapar el footer */
+    right: 15px;                    /* separación más cómoda desde el borde derecho */
+    padding: 7px 12px;            /* tamaño cómodo de clic */
+    font-size: 16px;
+}
+
+}
+
+
+/* ================== XL (Extra-Large) ================== */
+/* 1200px – 1399px */
+@media (min-width: 1200px) and (max-width: 1399px) {
+
+  /* ================== HEADER ================== */
+  .header-content { gap: 30px; }
+  .header-content .office-name { font-size: 3rem; }
+  .header-content .logo img { height: 90px; }
+
+  /* ================== NAVBAR ================== */
+  #main-nav .nav-bar { flex-wrap: nowrap; gap: 25px; }
+
+  /* ================== TABLA / CALENDARIO / SLIDER ================== */
+  .table { font-size: 1rem; }
+  #calendar { max-width: 95%; font-size: 0.85rem; }
+  .fc .fc-daygrid-event { font-size: 0.7rem; }
+  .carousel-item .card { width: 40%; }
+
+  /* ================== HERO SECTION ================== */
+  #hero-section { padding: 20px; }
+  .hero-title { font-size: 3.5rem; margin-bottom: 20px; }
+  .hero-subtitle { font-size: 1.7rem; }
+
+/* ================== FOOTER ================== */
+.footer-container {
+    flex-direction: row;           /* texto a la izquierda, logo a la derecha */
+    justify-content: space-between;/* separa horizontalmente */
+    align-items: center;           /* centra verticalmente */
+    text-align: left;
+    gap: 1px;                     /* separación entre texto y logo */
+    padding: 6px 12px;            /* espacio interno más uniforme */
+}
+
+.footer-text p {
+    font-size: 1rem;             /* un poquito más grande para mejor lectura */
+    margin: 0;
+    line-height: 1.5;
+    max-width: 100%;                /* evita que el texto se estire demasiado */
+}
+
+.footer-logo {
+    max-height: 50px;              /* ligeramente más grande para balancear */
+    width: auto;
+}
+
+/* ================== BOTÓN VOLVER ARRIBA ================== */
+#back-to-top-btn {
+    bottom: 110px;                  /* más arriba para no tapar el footer */
+    right: 15px;                    /* separación más cómoda desde el borde derecho */
+    padding: 7px 12px;            /* tamaño cómodo de clic */
+    font-size: 16px;
+}
+
+}
+
+/* ================== XXL (Extra Extra-Large) ================== */
+/* 1400px y más */
+@media (min-width: 1400px) {
+
+  /* ================== HEADER ================== */
+  .header-content { gap: 35px; }
+  .header-content .office-name { font-size: 3.5rem; }
+  .header-content .logo img { height: 100px; }
+
+  /* ================== NAVBAR ================== */
+  #main-nav .nav-bar { flex-wrap: nowrap; gap: 30px; }
+
+  /* ================== TABLA / CALENDARIO / SLIDER ================== */
+  .table { font-size: 1.1rem; }
+  #calendar { max-width: 80%; font-size: 0.9rem; }
+  .fc .fc-daygrid-event { font-size: 0.75rem; }
+  .carousel-item .card { width: 35%; }
+
+  /* ================== HERO SECTION ================== */
+  #hero-section { padding: 25px; }
+  .hero-title { font-size: 4rem; margin-bottom: 25px; }
+  .hero-subtitle { font-size: 2rem; }
+
+
+/* ================== FOOTER ================== */
+.footer-container {
+    flex-direction: row;           /* texto a la izquierda, logo a la derecha */
+    justify-content: space-between;/* separa horizontalmente */
+    align-items: center;           /* centra verticalmente */
+    text-align: left;
+    gap: 1px;                     /* separación entre texto y logo */
+    padding: 2px 8px;            /* espacio interno más uniforme */
+}
+
+.footer-text p {
+    font-size: 1.1rem;             /* un poquito más grande para mejor lectura */
+    margin: 0;
+    line-height: 1.5;
+    max-width: 100%;                /* evita que el texto se estire demasiado */
+}
+
+.footer-logo {
+    max-height: 60px;              /* ligeramente más grande para balancear */
+    width: auto;
+}
+
+
+/* ================== BOTÓN VOLVER ARRIBA ================== */
+#back-to-top-btn {
+    bottom: 110px;                  /* más arriba para no tapar el footer */
+    right: 200px;                    /* separación más cómoda desde el borde derecho */
+    padding: 7px 12px;            /* tamaño cómodo de clic */
+    font-size: 16px;
+}
+
+
+}
+
+
+

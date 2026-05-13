@@ -1,0 +1,988 @@
+/*
+ * =========================================================
+ * 1. VARIABLES Y RESET BÁSICO
+ * =========================================================
+ */
+
+:root {
+    /* Variables de diseño */
+    --font-primary: sans-serif;
+    --color-text: #EAEAEA; /* Gris claro para el texto */
+    --color-background: #000000; /* Fondo negro (espacio) */
+
+    /* Variables de animación/transición */
+    --duration: 0.8s;
+    --ease: cubic-bezier(0.25, 1, 0.5, 1); /* Curva de animación suave */
+
+    /* Variables de navegación (establecidas por JS en el HTML) */
+    --active: 1; /* Índice del planeta activo (1 a 8) */
+    --length: 8; /* Número total de planetas */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Asegura que la aplicación de pantalla completa no tenga barras de desplazamiento */
+}
+
+/*
+ * =========================================================
+ * 2. ESTRUCTURA Y CONTENEDOR PRINCIPAL
+ * =========================================================
+ */
+
+#app {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    /* Usamos Grid para organizar el contenido dentro de la app */
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+}
+
+/*
+ * =========================================================
+ * 3. ESTILOS DEL PLANETA (Compartidos)
+ * =========================================================
+ */
+
+.planet {
+    /* Posicionamiento para que todos se superpongan */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    /* Estado inicial: oculto y transparente */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity var(--duration) var(--ease);
+
+    /* Grid para colocar los elementos internos (título, detalles, figura) */
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Título | Espacio libre | Detalles/Figura */
+    padding: 5vh 5vw;
+    pointer-events: none; /* Desactiva clics cuando está inactivo */
+}
+
+.planet[data-active] {
+    /* Estado activo: visible y opaco */
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto; /* Permite clics en elementos interactivos dentro */
+}
+
+/*
+ * =========================================================
+ * 4. TÍTULO Y DESCRIPCIÓN
+ * =========================================================
+ */
+
+.planet-title {
+    grid-row: 1;
+    z-index: 10;
+}
+
+.planet-title h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 6rem); /* Tamaño responsivo del título */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'Oswald','sens-serif';
+}
+
+.planet-description {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    
+    /* Animación de entrada: deslice hacia arriba y fade-in */
+    opacity: 0;
+    transform: translateY(1em);
+    transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
+    font-family: 'Roboto','sans-serif';
+}
+
+.planet[data-active] .planet-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*
+ * =========================================================
+ * 5. DETALLES / MÉTRICAS
+ * =========================================================
+ */
+
+.planet-details {
+    grid-row: 3;
+    z-index: 10;
+    display: flex; /* Organiza las métricas en línea */
+    gap: 3vw;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    font-family: 'Oswald','sans-serif';
+    
+    /* Fade-in simple para el bloque de detalles */
+    opacity: 0;
+    transition: opacity var(--duration) var(--ease);
+}
+
+.planet[data-active] .planet-details {
+    opacity: 1;
+}
+
+.detail {
+    font-family: 'Oswald','sans-serif';
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--color-text);
+}
+
+/* Pseudo-elementos para añadir las etiquetas "tilt", "gravity", "hours" */
+.detail::before {
+    content: attr(data-detail);
+    display: block;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+/* Pseudo-elemento para añadir el sufijo (°, x) */
+.detail::after {
+    content: attr(data-postfix);
+}
+
+
+/*
+ * =========================================================
+ * 6. FIGURA DEL PLANETA (Imagen)
+ * =========================================================
+ */
+
+/* =========================================================
+ * 6. FIGURA DEL PLANETA (Imagen) — Corregida
+ * =========================================================
+ */
+
+.planet-figure {
+  grid-row: 1 / span 3;
+  place-self: center center;
+  margin: 0;
+  position: relative;
+  z-index: 5;
+  width: min(60vmin, 500px);
+  height: min(60vmin, 500px);
+  border-radius: 50%;
+  overflow: hidden; /* asegura que el borde circular o overlay no se salga */
+}
+
+.planet-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* todas se adaptan igual */
+  display: block;
+  transition: transform 1s ease, filter 1s ease;
+  filter: brightness(0.75) contrast(1.2) saturate(1.1);
+}
+
+/* Oscurece un poco todas las imágenes para uniformar tonos */
+.planet-figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Pequeño efecto de zoom y brillo en el planeta activo */
+.planet[data-active] .planet-figure img {
+  transform: scale(1.05);
+  /* filter: brightness(0.85) contrast(1.3) saturate(1.2); */
+  filter: brightness(1.1) contrast(1.2);
+
+}
+
+/* =========================================================
+ *  EXCEPCIÓN: SATURNO (para que se vean mejor los anillos)
+ * =========================================================
+ */
+
+/* Excepción solo para Saturno */
+.planet[data-planet="saturn"] .planet-figure img {
+    max-height: 110vh; /* más alto para que se vean los anillos */
+    transform: scale(1.15); /* aumenta un poco la figura */
+}
+
+
+
+/*
+ * =========================================================
+ * 7. NAVEGACIÓN SVG
+ * =========================================================
+ */
+
+/*
+ * =========================================================
+ * 7. NAVEGACIÓN TIPO CARRUSEL (Reemplaza al SVG)
+ * =========================================================
+ */
+
+.planet-nav {
+    /* Nuevo Posicionamiento: Extremo superior derecho */
+    position: absolute;
+    top: 5vh; 
+    right: 5vw;
+    z-index: 20;
+    width: 300px; /* Ancho fijo para el área visible del carrusel */
+    height: 30px; 
+    overflow: hidden; /* **Oculta los planetas que no caben en la vista** */
+    pointer-events: auto; 
+    display: flex; /* Contenedor para alinear los botones/flechas de navegación */
+    align-items: center;
+}
+
+.planet-list {
+    display: flex; /* Alinea los ítems de planeta en una línea horizontal */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* La transformación será controlada por JS para simular el desplazamiento */
+    transform: translateX(0); 
+    transition: transform var(--duration) var(--ease);
+}
+
+.planet-list-item {
+    /* Anchura fija para que el JS sepa cuánto desplazarse */
+    flex-shrink: 0; /* Evita que los elementos se encojan */
+    width: 100px; 
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: 'Oswald','sans-serif';
+    padding: 0 10px;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.planet-list-item:hover {
+    opacity: 1;
+}
+
+.planet-list-item[data-active="true"] {
+    opacity: 1;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Estilo para el tspan activo, simulado por JS */
+.planet-nav tspan[data-active="true"] {
+    opacity: 1;
+    font-weight: bold;
+}
+
+/* * =========================================================
+ * 9. MEDIA QUERY: OPTIMIZACIÓN XS (max-width: 576px)
+ * =========================================================
+ */
+
+/* * =========================================================
+ * 9. MEDIA QUERY: OPTIMIZACIÓN XS (max-width: 576px)
+ * =========================================================
+ */
+
+@media (max-width: 576px) {
+    
+    /* Contenedor principal del planeta */
+    .planet {
+        padding: 2vh 4vw; 
+        grid-template-rows: auto auto 1fr;
+    }
+
+    /* Título y Descripción (Mantenemos el tamaño anterior para no saturar) */
+    .planet-title {
+        text-align: center;
+    }
+
+    .planet-title h1 {
+    font-size: clamp(
+        2.9rem, /* [1] VALOR MÍNIMO: El tamaño nunca será menor a 2.5rem (aprox. 40px). 
+                   Esto garantiza la legibilidad en la pantalla más pequeña (ej. móviles XS). */
+        7vw,    /* [2] VALOR PREFERIDO: El tamaño intentará ser el 8% del ancho de la ventana gráfica (Viewport Width).
+                   Esta es la parte DINÁMICA que hace que el texto crezca y se encoja. */
+        3.2rem    /* [3] VALOR MÁXIMO: El tamaño nunca será mayor a 3rem (aprox. 48px). 
+                   Esto evita que el título sea exageradamente grande en monitores de escritorio gigantes. */
+    );
+    font-family: 'Oswald','sans-serif';
+}
+ 
+    .planet-description {
+        font-size: clamp(1.5rem, 2.2vw, 1.3rem);
+        font-family: 'Roboto','sans-serif';
+        margin-top: 5px;
+    }
+
+    /* Detalles/Métricas: Aumentar el tamaño de fuente */
+    .planet-details {
+        grid-row: 2;
+        margin-top: 15px;
+        gap: 4vw;
+        justify-content: space-between; 
+        font-family: 'Oswald','sans-serif';
+        
+        /* CAMBIO 1: Aumentar la fuente principal de las métricas */
+        font-size: 1.2rem; 
+    }
+    
+    /* Etiqueta de la métrica (TILT, GRAVITY, HOURS) */
+    .detail::before {
+        content: attr(data-detail);
+        display: block;
+        
+        /* CAMBIO 2: Aumentar el tamaño de la etiqueta */
+        font-size: 0.8em; 
+        text-transform: uppercase;
+        opacity: 0.8;
+    }
+
+
+    /* Figura del Planeta */
+    .planet-figure {
+        grid-row: 3;
+        margin-top: 15px;
+    }
+    .planet-figure img {
+        max-height: 60vh; /* Aumentar la altura para que ocupe más espacio */
+        max-width: 85vw;
+        
+        /* Opcional: Aplicar escala para un zoom visual sin cambiar el contenedor */
+        transform: scale(1.1); /* Esto la hace 10% más grande */
+    }
+
+    /* Navegación Carrusel */
+    .planet-nav {
+        top: auto; 
+        bottom: 15px; 
+        right: 0;
+        width: 100%;
+        height: 25px;
+        justify-content: center;
+    }
+
+    .planet-list-item {
+        width: 70px; 
+        font-size: 0.9rem;
+        padding: 0 5px;
+    }
+    
+    .planet[data-planet="saturn"] .planet-figure {
+        grid-row: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+        background: transparent;
+        border-radius: 0;
+        margin-top: 15px; /* menos espacio en pantallas muy pequeñas */
+    }
+
+  .planet[data-planet="saturn"] .planet-figure img {
+    width: auto;
+    height: auto;
+    max-height: 25vh; /* más reducido para XS */
+    max-width: none;
+    transform: scale(1);
+    border-radius: 0 !important;
+    background: transparent;
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .planet[data-planet="saturn"] .planet-figure::after {
+    display: none;
+  }
+}
+
+
+/* * =========================================================
+ * 10. MEDIA QUERY: OPTIMIZACIÓN S (576px a 767px)
+ * =========================================================
+ */
+
+@media (min-width: 576px) and (max-width: 767px) {
+    
+    /* Contenedor principal del planeta */
+    .planet {
+        padding: 3vh 5vw; 
+        grid-template-rows: auto auto 1fr;
+    }
+
+    /* Título y Descripción */
+    .planet-title {
+        text-align: center;
+    }
+    .planet-title h1 {
+        font-size: clamp(3rem, 10vw, 4rem); 
+        font-family: 'Oswald','sans-serif';
+    }
+    .planet-description {
+        font-size: clamp(1.5rem, 4vw, 1.9rem);
+        font-family: 'Roboto','sans-serif';
+        margin-top: 10px;
+    }
+
+    /* Detalles/Métricas */
+    .planet-details {
+        grid-row: 2;
+        margin-top: 25px;
+        gap: 5vw;
+        justify-content: space-around;
+        font-family: 'Oswald','sans-serif';
+        font-size: 1.5rem; 
+    }
+    
+    .detail::before {
+        font-size: 0.7em; 
+        opacity: 0.8;
+    }
+
+    /* Figura del Planeta */
+    .planet-figure {
+        grid-row: 3;
+        margin-top: 20px;
+    }
+    
+    .planet-figure img {
+        max-height: 65vh; 
+        max-width: 85vw;
+        transform: scale(1.15);
+    }
+
+    /* 🚨 CORRECCIÓN CLAVE: Navegación Carrusel */
+    .planet-nav {
+        /* Fuerza la posición inferior (igual que en XS) */
+        top: auto; 
+        bottom: 20px; 
+        
+        /* Asegura que ocupe todo el ancho y se centre */
+        right: 0;
+        width: 100%; 
+        height: 30px;
+        justify-content: center;
+    }
+
+    .planet-list-item {
+        width: 85px; 
+        /* Aumentar la fuente para mejor legibilidad en tablets pequeñas */
+        font-size: 1.1rem; 
+    }
+
+    /* Saturno centrado y mostrando anillos completos en S */
+    .planet[data-planet="saturn"] .planet-figure {
+        grid-row: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+        background: transparent;
+        border-radius: 0;
+        margin-top: 20px; /* un poco menos que en M */
+    }
+
+    .planet[data-planet="saturn"] .planet-figure img {
+        width: auto;
+        height: auto;
+        max-height: 35vh; /* más chico para pantallas pequeñas */
+        max-width: none;
+        transform: scale(1); 
+        border-radius: 0 !important;
+        background: transparent;
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .planet[data-planet="saturn"] .planet-figure::after {
+        display: none;
+    }
+
+
+}
+
+
+/* * =========================================================
+ * 11. MEDIA QUERY: OPTIMIZACIÓN M (768px a 991px)
+ * =========================================================
+ */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    
+    /* Contenedor principal del planeta */
+    .planet {
+        /* Aumentamos el padding para usar el espacio ancho */
+        padding: 5vh 8vw; 
+        /* Mantenemos la estructura de pila vertical */
+        grid-template-rows: auto auto 1fr;
+    }
+
+    /* Título y Descripción */
+    .planet-title {
+        text-align: center;
+    }
+    
+    .planet-title h1 {
+        /* Aumentamos el tamaño máximo del título */
+        font-size: clamp(3.5rem, 8vw, 5rem); 
+        font-family: 'Oswald','sans-serif';
+    }
+    
+    .planet-description {
+        /* Aumentamos el tamaño de la descripción */
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        font-family: 'Roboto','sans-serif';
+        margin-top: 15px;
+    }
+
+    /* Detalles/Métricas */
+    .planet-details {
+        grid-row: 2;
+        margin-top: 35px; /* Más separación del título */
+        gap: 8vw; /* Más espacio entre las métricas */
+        justify-content: space-around;
+        font-family: 'Oswald','sans-serif';
+        
+        /* Aumentamos la fuente principal para mejor lectura en tablets */
+        font-size: 1.6rem; 
+    }
+    
+    .detail::before {
+        font-size: 0.7em; 
+        opacity: 0.8;
+    }
+
+    /* Figura del Planeta */
+    .planet-figure {
+        grid-row: 3;
+        margin-top: 30px; /* Más espacio de separación */
+    }
+    
+    .planet-figure img {
+        /* Aumentamos el tamaño, acercándola aún más o permitiendo que ocupe más espacio */
+        max-height: 50vh; 
+        max-width: 65vw;
+        
+        /* Mantenemos el zoom visual */
+        transform: scale(1.1); 
+    }
+
+    /* Navegación Carrusel */
+    .planet-nav {
+        /* Mantenemos en la parte inferior anclada */
+        top: auto; 
+        bottom: 30px; 
+        right: 0;
+        width: 100%; 
+        height: 35px;
+        justify-content: center;
+    }
+
+    .planet-list-item {
+        /* Aumentamos ligeramente el ancho y la fuente */
+        width: 100px; 
+        font-size: 1.2rem; 
+    }
+    
+    /* Saturno centrado y mostrando anillos completos en M */
+    .planet[data-planet="saturn"] .planet-figure {
+    grid-row: 3;
+    display: flex;
+    justify-content: center; /* centrado horizontal */
+    align-items: center;
+    overflow: visible;       /* deja que los anillos sobresalgan */
+    background: transparent;
+    border-radius: 0;
+    margin-top: 30px;
+    }
+
+    .planet[data-planet="saturn"] .planet-figure img {
+    width: auto;             /* ancho automático */
+    height: auto;            /* mantiene proporción */
+    max-height: 50vh;        /* lo mismo que los otros planetas */
+    max-width: none;         /* permitimos que se vea completo */
+    transform: scale(1);     /* escala normal, para no cortarlo */
+    border-radius: 0 !important;
+    background: transparent;
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+    margin: 0 auto;
+    display: block;
+    }
+
+    .planet[data-planet="saturn"] .planet-figure::after {
+    display: none;           /* quita overlay negro */
+    }
+
+
+}
+
+
+/* * =========================================================
+ * 12. MEDIA QUERY: OPTIMIZACIÓN L (992px a 1199px)
+ * =========================================================
+ */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    
+    /* Contenedor principal del planeta: Diseño Horizontal */
+    .planet {
+        /* 🚨 AJUSTE CLAVE: Reducimos el padding superior (top) 
+           para que el contenido suba y eliminamos la franja negra vacía. 
+           Dejamos un poco de padding inferior (bottom) para compensar la navegación. */
+        padding: 2vh 10vw 5vh 10vw; 
+        
+        grid-template-columns: 1.5fr 0.5fr 2fr; 
+        grid-template-rows: auto 1fr auto; /* Top | Centro Principal | Bottom */
+        align-items: center;
+
+        
+    }
+
+    /* Título y Descripción: Posicionamiento */
+    .planet-title {
+        grid-row: 2; 
+        grid-column: 1; 
+        text-align: left; 
+    }
+    
+    .planet-title h1 {
+        font-size: clamp(4.5rem, 6.5vw, 6rem); 
+        font-family: 'Oswald','sans-serif';
+        margin-bottom: 5px; 
+    }
+    
+    .planet-description {
+        font-size: clamp(1.5rem, 2.5vw, 1.8rem); 
+        font-family: 'Roboto','sans-serif';
+        margin-top: 5px; 
+    }
+
+    /* Detalles/Métricas: Posicionar */
+    .planet-details {
+        grid-row: 3; 
+        grid-column: 1; 
+        align-self: start; 
+        margin-bottom: 0; 
+        margin-top: 20px; 
+        gap: 2.5vw;
+        justify-content: flex-start; 
+        font-family: 'Oswald','sans-serif';
+        font-size: 1.4rem; 
+    }
+    
+    .detail::before {
+        font-size: 0.7em; 
+        opacity: 0.8;
+    }
+
+    /* Figura del Planeta: Más Grande y Amplia */
+    .planet-figure {
+        grid-row: 1 / span 2; 
+        grid-column: 3; 
+        place-self: center center;
+    }
+
+    .planet-figure img {
+        /* Mantenemos el tamaño grande */
+        max-height: 90vh; 
+        
+        /* 🚨 CORRECCIÓN: Usamos 100% para que no se desborde del ancho de la columna */
+        max-width: 100%; 
+        
+        /* Usamos scale(1.1) SÓLO si queremos ese zoom extra del 10% */
+        transform: scale(1.6); 
+    }
+
+    /* 🚨 AJUSTE CLAVE: Navegación Carrusel (Mover a la esquina INFERIOR derecha) */
+    .planet-nav {
+        top: auto;     /* Ya no está anclado arriba */
+        bottom: 5vh;   /* Se ancla al 5vh del borde inferior */
+        right: 5vw;
+        width: 350px; 
+        height: 35px;
+        justify-content: flex-start; 
+    }
+
+    .planet-list-item {
+        width: 100px; 
+        font-size: 1.1rem; 
+    }
+
+    /* Excepción: Saturno en pantallas L */
+    .planet[data-planet="saturn"] .planet-figure {
+        grid-column: 3;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        overflow: visible;
+        background: transparent;
+        border-radius: 0;
+        padding-right: 2vw; /* pequeño empuje extra sin usar margen negativo */
+    }
+
+    .planet[data-planet="saturn"] .planet-figure img {
+        width: auto;
+        height: auto;
+        max-height: 60%;      /* correcto: un poco más chico que XXL */
+        max-width: 95%;
+        transform: scale(1.65) translateX(3%); /* leve zoom + desplazamiento suave */
+        border-radius: 0 !important;
+        background: transparent;
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
+    }
+
+    .planet[data-planet="saturn"] .planet-figure::after {
+    display: none; /* quita overlay */
+    }
+
+}
+
+/* * =========================================================
+ * 13. MEDIA QUERY: OPTIMIZACIÓN XL (1200px a 1399px)
+ * =========================================================
+ */
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+    
+    /* Contenedor principal del planeta: Diseño Horizontal */
+    .planet {
+        /* Aumentamos el padding para darle más aire */
+        padding: 5vh 12vw 5vh 12vw; 
+        
+        /* Mantenemos la estructura de la grilla */
+        grid-template-columns: 1.5fr 0.5fr 2fr; 
+        grid-template-rows: auto 1fr auto; 
+        align-items: center;
+    }
+
+    /* Título y Descripción: Escalamiento */
+    .planet-title {
+        grid-row: 2; 
+        grid-column: 1; 
+    }
+    
+    .planet-title h1 {
+        /* Aumentamos ligeramente el máximo del título */
+        font-size: clamp(5rem, 6vw, 7rem); 
+        font-family: 'Oswald','sans-serif';
+        margin-bottom: 8px; 
+    }
+    
+    .planet-description {
+        /* Aumentamos la descripción */
+        font-size: clamp(1.6rem, 2.2vw, 2rem); 
+        font-family: 'Roboto','sans-serif';
+        margin-top: 8px; 
+    }
+
+    /* Detalles/Métricas: Posicionamiento y Escalamiento */
+    .planet-details {
+        grid-row: 3; 
+        grid-column: 1; 
+        margin-top: 25px; /* Más espacio */
+        gap: 3vw;
+        font-size: 1.6rem; /* Aumentamos el tamaño de la métrica */
+    }
+    
+    .detail::before {
+        font-size: 0.8em; /* Aumentamos la etiqueta */
+        opacity: 0.8;
+    }
+
+    /* Figura del Planeta: Mantenemos el mismo tamaño dominante */
+    .planet-figure {
+        grid-row: 1 / span 2; 
+        grid-column: 3; 
+        place-self: center center;
+    }
+    
+    .planet-figure img {
+        /* Mantenemos el max-height grande y quitamos el transform para simplificar */
+        max-height: 95vh; 
+        max-width: 100%;
+        transform: scale(1); 
+    }
+
+    /* Navegación Carrusel */
+    .planet-nav {
+        top: auto;     
+        bottom: 5vh; 
+        right: 5vw;
+        width: 400px; /* Aumentamos el ancho visible del carrusel */
+        height: 40px; /* Aumentamos la altura */
+    }
+
+    .planet-list-item {
+        width: 100px; 
+        font-size: 1.2rem; /* Aumentamos la fuente del ítem de navegación */
+    }
+
+    /*Bloque para saturno solamente*/
+
+    .planet[data-planet="saturn"] .planet-figure {
+        grid-column: 3;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        overflow: visible;
+        background: transparent;
+        border-radius: 0;
+    }
+
+    .planet[data-planet="saturn"] .planet-figure img {
+        width: auto;
+        height: auto;
+        max-height: 60%;   /* un poco más chico que en XXL */
+        max-width: 95%;
+        transform: scale(1.6);  /* menos zoom para mantener proporción */
+        border-radius: 0 !important;
+        background: transparent;
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
+        margin-right: -4vw; /* probá -2vw, -3vw o -4vw según necesites */
+    }
+
+    .planet[data-planet="saturn"] .planet-figure::after {
+        display: none;
+    }
+
+}
+
+/* * =========================================================
+ * 14. MEDIA QUERY: OPTIMIZACIÓN XXL (min-width: 1400px)
+ * =========================================================
+ */
+
+@media (min-width: 1400px) {
+    
+    /* Contenedor principal del planeta: Diseño Horizontal */
+    .planet {
+        /* Aumentamos el padding lateral para centrar el contenido en pantallas muy anchas */
+        padding: 5vh 15vw 5vh 15vw; 
+        
+        /* Mantenemos la estructura de la grilla */
+        grid-template-columns: 1.5fr 0.5fr 2fr; 
+        grid-template-rows: auto 1fr auto; 
+        align-items: center;
+    }
+
+    /* Título y Descripción: Escalamiento */
+    .planet-title {
+        grid-row: 2; 
+        grid-column: 1; 
+    }
+    
+    .planet-title h1 {
+        /* Hacemos el título más grande para dominar la pantalla */
+        font-size: clamp(5.5rem, 5vw, 8rem); 
+        font-family: 'Oswald','sans-serif';
+        margin-bottom: 10px; 
+    }
+    
+    .planet-description {
+        /* Escalamiento cómodo para lectura */
+        font-size: clamp(1.7rem, 1.9vw, 2.1rem); 
+        font-family: 'Roboto','sans-serif';
+        margin-top: 10px; 
+    }
+
+    /* Detalles/Métricas: Posicionamiento y Escalamiento */
+    .planet-details {
+        grid-row: 3; 
+        grid-column: 1; 
+        margin-top: 30px; /* Más espacio */
+        gap: 3vw;
+        font-size: 1.8rem; /* Aumentamos el tamaño de la métrica */
+    }
+    
+    .detail::before {
+        font-size: 0.8em; 
+        opacity: 0.8;
+    }
+
+    /* Figura del Planeta: Mantenemos el mismo tamaño dominante */
+    .planet-figure {
+        grid-row: 1 / span 2; 
+        grid-column: 3; 
+        place-self: center center;
+    }
+    
+    .planet-figure img {
+        /* Usamos la máxima altura posible para asegurar que el planeta sea el foco */
+        max-height: 98vh; 
+        max-width: 100%;
+        transform: scale(1); 
+    }
+
+    /* Navegación Carrusel */
+    .planet-nav {
+        top: auto;     
+        bottom: 5vh; 
+        right: 5vw;
+        width: 450px; /* Ancho cómodo para la navegación */
+        height: 45px;
+    }
+
+    .planet-list-item {
+        width: 100px; 
+        font-size: 1.3rem; /* Aumentamos la fuente del ítem de navegación */
+    }
+
+    /* Excepción dentro del XXL */
+    .planet[data-planet="saturn"] .planet-figure {
+        grid-column: 3; /* coincide con las demás */
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        overflow: visible; /* deja que los anillos sobresalgan */
+        background: transparent; /* quita el fondo negro */
+        border-radius: 0;    /* elimina el círculo */
+    }
+
+
+    .planet[data-planet="saturn"] .planet-figure img {
+        width: auto;            /* mantiene proporción */
+        height: auto;           /* evita recorte vertical */
+        max-height: 70%;        /* ajusta para que quepa en pantalla */
+        max-width: 100%;        /* no sobresalga de la pantalla */
+        transform: scale(1.9);  /* “aleja” la imagen mostrando los anillos */
+        border-radius: 0; /* elimina cualquier redondeado */
+        background: transparent; /* elimina fondo si hubiera */
+        transform: scale(1.9);   /* mantiene el “zoom” */
+        clip-path: none !important;
+        -webkit-clip-path: none !important;
+        border-radius: 0 !important;
+    }
+    
+    .planet[data-planet="saturn"] .planet-figure::after {
+    display: none;       /* quita el overlay negro */
+    }
+
+
+}
+
+

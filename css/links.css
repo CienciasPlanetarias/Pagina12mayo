@@ -1,0 +1,96 @@
+.links-interes {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.card {
+  background: #0d1b2a;
+  font-family: "Oswald", sans-serif;
+  color: #F5c519;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 100%;
+}
+
+.card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-transform: none !important;
+}
+
+.card p {
+  font-family: "Roboto",sans-serif;
+  color: #F9FAFA;
+  margin-bottom: 1.2rem;
+}
+
+.card ul {
+  list-style: none; /* sacamos bullets */
+  padding-left: 0;
+}
+
+.card li {
+  position: relative;
+  margin: 0.8rem 0;
+  padding-left: 1.8rem;
+  
+  /* Agregamos esto para alinear */
+  display: flex;
+  align-items: center; /* Alineación vertical perfecta */
+  min-height: 1.5rem;  /* Asegura un alto mínimo para la estrella */
+}
+
+.card li::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: gold;
+  font-size: 1.1rem; /* Lo bajamos un poquito para que no sea gigante */
+  
+  /* Ajuste fino de posición */
+  display: flex;
+  align-items: center;
+  height: 100%; /* Se centra respecto al alto del li */
+  top: 0; 
+}
+
+.card a {
+  font-family: "Roboto",sans-serif;
+  text-decoration: none;
+  color: #0073e6;
+  font-weight: 500;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 575px){
+
+  .links-interes {
+    padding: 1rem; /* Reducir el padding general */
+  }
+
+  .card h2 {
+    font-size: 1.4rem; /* Reducir de 1.8rem a 1.4rem (22.4px) para XS */
+  }
+
+  .card p {
+    font-size: 0.9rem; /* Asegurar que el párrafo se reduce a 14.4px */
+  }
+}
+
+@media (min-width: 1400px){
+
+  .card {
+    max-width: 800px; /* Permitir que la tarjeta se haga más ancha en pantallas XXL */
+  }
+
+  .card h2 {
+    font-size: 2.2rem; /* Aumentar a 2.2rem (35.2px) para jerarquía */
+  }
+}

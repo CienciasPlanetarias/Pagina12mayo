@@ -1,0 +1,868 @@
+/* ===================== ESTE CSS ES DEL HTML FASES-LUNARES QUE SOLO MODIFICA ESA PAGINA ===================== */
+/* ===========================
+   Banner principal
+=========================== */
+
+.intro-banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #000; /* opcional, para que no se vea corte feo */
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.banner-img {
+  width: 90%;          /* deja márgenes laterales, no ocupa todo */
+  max-width: 1200px;   /* límite en pantallas muy grandes */
+  height: auto;
+  max-height: 380px;
+  border-radius: 1rem; /* opcional, da mejor aspecto */
+  display: block;
+  object-fit: contain; /* no recorta, mantiene la imagen completa */
+}
+
+/* ===================== Intro Section ===================== */
+.intro-section {
+ 
+  color: #f9f9f9;
+}
+
+.intro-section h2 {
+  color: #f5c518;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.intro-section p {
+  font-size: 1.2rem;
+  font-family: "Roboto",sans-serif;
+}
+
+.intro-section img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 12px;
+}
+
+
+.intro-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* Sección de Fases Lunares */
+
+.titulo-fases {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem; /* En L */
+    color: #f5c518;
+    margin-bottom: 20px;
+}
+
+.descripcion-fases {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px; 
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* El texto que invita a usar las tarjetas (celeste para resaltar) */
+.instruccion-fases {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #00BFFF; /* Celeste de la guía de estilos */
+    font-style: italic;
+    margin-top: 25px;
+}
+
+/* ===================== Reset container ===================== */
+.container {
+  background: transparent !important; /* elimina fondo azul */
+}
+
+/* ===================== Sección de fases ===================== */
+#explicacion-fases.fases-lunares-explicacion h2 {
+  color: #f5c518; /* amarillo */
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 0.8rem;
+  border-bottom: 2px solid #f5c518; /* subrayado moderno */
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+
+#explicacion-fases.fases-lunares-explicacion p {
+  color: #f0f0f0;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ==== Bloques estilo revista ==== */
+#explicacion-fases.fases-lunares-explicacion .fase-card {
+  display: flex;
+  flex-direction: row;       /* texto a la izquierda, imagen a la derecha */
+  align-items: stretch;      /* igual altura */
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 16px;       /* esquinas redondeadas */
+  padding: 2rem;             /* espacio interno más amplio */
+  margin: 2rem auto;         /* separa bloques */
+  width: 90%;                /* ocupa casi todo el contenedor */
+  max-width: 1200px;         /* nunca más ancho que esto */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  border-left: 4px solid #f5c518; /* línea lateral inicial amarilla */
+  transition: transform 0.3s ease;
+}
+
+/* Fondo alternado y línea lateral */
+#explicacion-fases.fases-lunares-explicacion .fase-card:nth-child(even) {
+  border-left: 4px solid #3498db; /* celeste en pares */
+}
+
+/* Columnas dentro del bloque */
+#explicacion-fases.fases-lunares-explicacion .fase-card .col-lg-8 {
+  flex: 2;
+  padding-right: 1.5rem;
+}
+
+#explicacion-fases.fases-lunares-explicacion .fase-card .col-lg-4 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagen */
+#explicacion-fases.fases-lunares-explicacion .fase-card img {
+  width: 70%;
+  height: auto;
+  max-height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+#explicacion-fases.fases-lunares-explicacion .fase-card img:hover {
+  transform: scale(1.05);
+}
+
+/*links de interes*/
+
+.texto-final {
+    /* Configuramos la base blanca */
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400; /* Peso normal, no negrita */
+    margin: 20px 0;
+    text-align: center;
+}
+
+.links-interes h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;   /* Ligeramente más pequeño */
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color:#f5c518;
+}
+
+.link-final {
+    /* Configuramos el link para que sea exactamente igual en forma */
+    color: #00BFFF !important;       /* Color Celeste */
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;     /* Mismo grosor que el texto blanco */
+    
+    /* Eliminamos cualquier rastro de botón */
+    text-decoration: underline;      /* Subrayado simple de link */
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: inline !important;      /* Se integra en la línea */
+    cursor: pointer;
+}
+
+.link-final:hover {
+    color: #f5c518 !important;       /* Al pasar el mouse se pone blanco */
+    text-decoration: none;           /* Se quita el subrayado al pasar el mouse */
+}
+
+
+/* Contenedor centrado y responsivo */
+.section-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 40px 20px; /* un poco menos vertical */
+  background: #0d1b2a;
+  color: #f5c518;
+  text-align: center;
+  border-top: 2px solid #f5c518;
+  border-bottom: 2px solid #f5c518;
+
+}
+
+.faq-section h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;  /* más compacto */
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Acordeón */
+.accordion-item {
+  margin-bottom: 15px;
+  text-align: left;
+  max-width: 700px; /* más compacto */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  overflow: hidden;
+ 
+  background: #f9fafa;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.accordion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.4);
+}
+
+/* Label */
+/* ESTADO BASE Y NORMAL (Sección Cerrada) */
+.accordion-item {
+    max-width: 500px;
+    margin: 0 auto 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #F9FAFA; /* Fondo base del item */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    font-family: "Roboto",sans-serif;
+}
+
+/* 1. ESTADO NORMAL (Etiqueta del Acordeón Cerrado) */
+.accordion-item label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #F9FAFA; /* Fondo: Blanco (Normal) */
+    color: #000000;              /* Texto: Negro */
+    font-size: 1rem;
+    transition: background 0.3s, color 0.3s, border-bottom 0.3s;
+    border-bottom: 1px solid rgba(245,197,24,0.3);
+}
+
+/* 2. ESTADO FLOTANTE (:hover) - Mantiene el color azul/celeste en interacción */
+.accordion-item label:hover {
+    background: #2980b9; /* Fondo: Celeste Oscuro */
+    color: #F9FAFA;      /* Texto: Blanco (CORRECCIÓN de legibilidad) */
+    border-bottom-color: #2980b9; /* Borde oscuro para consistencia */
+}
+
+/* 3. ESTADO ACTIVO/ABIERTO (.active) - ESTE ES EL CAMBIO CLAVE. */
+/* Mantiene el color Celeste (#2980b9) de forma PERSISTENTE cuando está abierto. */
+.accordion-item.active label {
+    background-color: #2980b9; /* Fondo: Celeste Oscuro (Activo Persistente) */
+    color: #F9FAFA;             /* Texto: Blanco */
+    /* Este estilo es clave: mantiene el color y quita el borde para conectar el contenido desplegado */
+    border-bottom: none; 
+}
+
+
+/* Icono +/– */
+.icon {
+  font-size: 1.3rem;
+  transition: transform 0.3s, color 0.3s;
+}
+
+/* Contenido */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  background: #000000;
+  padding: 0 18px;
+  border-top: 1px solid rgba(245,197,24,0.3);
+  
+}
+
+.accordion-content p {
+  margin: 12px 0;
+  color: #f9fafa;
+  line-height: 1.5;
+  font-size: 0.95rem; /* texto más compacto */
+  font-family: "Roboto",sans-serif;
+}
+
+/* Estado activo */
+.accordion-item.active .accordion-content {
+  max-height: 400px; /* menos alto */
+  padding: 14px 18px;
+}
+
+.accordion-item.active .icon {
+  transform: rotate(180deg);
+  color: #000000;
+}
+
+
+/*Responsivo solo para esta seccion de las fases de las lunas */
+/* Responsive: apila columnas en móviles */
+
+/* ================== XS (0–575px) ================== */
+@media (max-width: 575px) {
+  .intro-section {
+    display: flex;
+    flex-direction: column;   /* en S: texto arriba, imagen abajo */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;                /* un poquito menos de espacio */
+    text-align: left;       /* centrado en móviles queda más limpio */
+  }
+
+  .intro-section h1 {
+    font-size: 1.8rem;        /* más compacto que en M */
+  }
+
+  .intro-section p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .intro-section img {
+    max-width: 450px;         /* reducimos imagen */
+    height: auto;
+  }
+
+  /* Ajuste de cards de fases lunares */
+  #explicacion-fases.fases-lunares-explicacion .fase-card {
+    width: 100%;
+    max-width: 400px;         /* más angosto que 500px */
+    flex-direction: column;   /* apilar contenido en pantallas chicas */
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion img {
+    width: 50%;
+    max-width: 200px; /* o el valor que quieras como límite */
+    height: auto;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion h2 {
+    font-size: 1.1rem;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+/*seccion que lleva a link de interes */
+
+  .section-inner {
+    max-width: 400px;   /* un poco más angosto */
+    padding: 0 6px;    /* menos espacio lateral */
+  }
+
+  .links-interes h2 {
+    font-size: 1.7rem;  /* título más chico */
+  }
+
+  .links-interes p {
+    font-size: 0.8rem; /* párrafo más compacto */
+  }
+
+  .links-interes a {
+    padding: 5px 10px;  /* botones más chicos */
+    font-size: 0.8rem;
+    display: inline-block; /* siguen en fila, pero más compactos */
+  }
+
+
+/*--Acordeon responsivo*/
+  /* Sección FAQ */
+  .faq-section {
+    padding: 20px 10px;      /* menos espacio vertical y lateral */
+  }
+
+  .faq-section h2 {
+    font-size: 1.6rem;       /* título más pequeño */
+    margin-bottom: 22px;     /* menos separación debajo */
+  }
+
+  /* Rectángulo del acordeón */
+  .accordion-item {
+    max-width: 65%;          /* ocupa casi todo el ancho disponible */
+    margin: 0 auto 7px;      /* centrado horizontal y margen inferior */
+  }
+
+  /* Encabezado del item */
+  .accordion-item label {
+    padding: 6px 12px;        /* menos altura del rectángulo */
+    font-size: 0.9rem;        /* texto más compacto */
+  }
+
+  /* Contenido del acordeón */
+  .accordion-content p {
+    font-size: 0.9rem;       /* texto más chico */
+    line-height: 1.4;         /* para mantener legibilidad */
+  }
+
+  /* Icono + / - */
+  .icon {
+    font-size: 1rem;
+  }
+
+  
+}
+
+/* ================== S (576–767px) ================== */
+@media (min-width: 576px) and (max-width: 767px) {
+  .intro-section {
+    display: flex;
+    flex-direction: row;       /* texto a la izquierda, imagen a la derecha */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;                 /* menos espacio entre texto e imagen */
+    text-align: left;
+  }
+
+  .intro-section h1 {
+    font-size: 1.8rem;         /* más chico que en M */
+  }
+
+  .intro-section p {
+    font-size: 0.85rem;        /* más compacto */
+  }
+
+  .intro-section img {
+    max-width: 380px;          /* más chica la imagen que en M */
+    width: 100%;
+    height: auto;
+  }
+
+  .intro-text {
+    flex: 1;                   /* ocupa lo que haga falta */
+  }
+
+  /* --- Fases lunares --- */
+  #explicacion-fases.fases-lunares-explicacion .fase-card {
+      width: 95%;
+      max-width: 600px;        /* más angosto */
+      flex-direction: column;  /* en S mejor apilar */
+      gap: 0.8rem;
+      padding: 1rem;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion .col-lg-8,
+  #explicacion-fases.fases-lunares-explicacion .col-lg-4 {
+      flex: 1;
+      text-align: center;      /* más legible en pantallas chicas */
+  }
+
+  #explicacion-fases.fases-lunares-explicacion img {
+      width: 100%;
+      max-width: 200px;        /* que no se dispare el tamaño */
+      height: auto;
+      margin: 0 auto;          /* centrar */
+  }
+
+  #explicacion-fases.fases-lunares-explicacion h2{
+    font-size: 1.8rem;
+  }
+  #explicacion-fases.fases-lunares-explicacion p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      text-align: left;
+  }
+
+  /*seccion que lleva a link de interes */
+
+  .section-inner {
+    max-width: 420px;   /* un poco más angosto */
+    padding: 0 8px;    /* menos espacio lateral */
+  }
+
+  .links-interes h2 {
+    font-size: 1.9rem;  /* título más chico */
+  }
+
+  .links-interes p {
+    font-size: 0.8rem; /* párrafo más compacto */
+  }
+
+  .links-interes a {
+    padding: 5px 10px;  /* botones más chicos */
+    font-size: 0.9rem;
+    display: inline-block; /* siguen en fila, pero más compactos */
+  }
+
+
+  /* Sección FAQ */
+  .faq-section {
+    padding: 28px 18px;      /* espacio cómodo */
+  }
+
+  .faq-section h2 {
+    font-size: 1.6rem;         /* título visible pero no gigante */
+    margin-bottom: 18px;
+  }
+
+  /* Rectángulo del acordeón */
+  .accordion-item {
+    max-width: 70%;          /* ocupa casi todo el ancho disponible */
+    margin: 0 auto 10px;      /* centrado horizontal y margen inferior */
+  }
+
+  /* Encabezado del item */
+  .accordion-item label {
+    padding: 7px 10px;      /* altura generosa */
+    font-size: 0.8rem;         /* texto legible */
+  }
+
+  /* Contenido del acordeón */
+  .accordion-content p {
+    font-size: 0.7rem;
+    line-height: 1.1;
+  }
+
+  /* Icono + / - */
+  .icon {
+    font-size: 1.2rem;
+  }
+}
+
+
+/* ================== M (768–991px) ================== */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .intro-section {
+    display: flex;
+    flex-direction: row;   /* texto a la izquierda, imagen a la derecha */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;             /* espacio entre texto e imagen */
+    text-align: left;      /* alinear texto a la izquierda */
+  }
+
+  .intro-section h1 {
+    font-size: 2.2rem;     /* más chico que en desktop */
+  }
+
+  .intro-section p {
+    font-size: 0.95rem;    /* un poco más compacto */
+  }
+
+  .intro-section img {
+    max-width: 550px;      /* reducir tamaño de la imagen */
+    height: auto;
+  }
+
+  /* Podés agrupar título + párrafo en un div */
+  .intro-text {
+    flex: 1;               /* que ocupe lo que haga falta */
+  }
+
+  #explicacion-fases.fases-lunares-explicacion .fase-card  {
+      width: 100%;
+      max-width: 1000px;
+      flex-direction: row;
+      gap: 1rem;
+      padding: 1.2rem;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion .col-lg-8,
+  #explicacion-fases.fases-lunares-explicacion .col-lg-4 {
+      flex: 1;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion img {
+      width: 80%;
+      height: auto;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion h2{
+    font-size: 1.5rem;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion p {
+      font-size: 1rem;
+      line-height: 1.4;
+      text-align: left;
+  }
+
+  
+/*seccion que lleva a link de interes */
+
+  .section-inner {
+    max-width: 500px;   /* un poco más angosto */
+    padding: 0 10px;    /* menos espacio lateral */
+  }
+
+  .links-interes h2 {
+    font-size: 1.8rem;  /* título más chico */
+  }
+
+  .links-interes p {
+    font-size: 0.95rem; /* párrafo más compacto */
+  }
+
+  .links-interes a {
+    padding: 6px 12px;  /* botones más chicos */
+    font-size: 0.95rem;
+    display: inline-block; /* siguen en fila, pero más compactos */
+  }
+
+
+  /* Sección FAQ */
+  .faq-section {
+    padding: 30px 20px;      /* espacio cómodo */
+  }
+
+  .faq-section h2 {
+    font-size: 2.2rem;         /* título visible pero no gigante */
+    margin-bottom: 25px;
+  }
+  
+
+  /* Rectángulo del acordeón */
+  .accordion-item {
+    max-width: 70%;        /* ancho contenido moderado */
+    margin: 0 auto 10px;     /* centrado horizontal y margen inferior */
+  }
+
+  /* Encabezado del item */
+  .accordion-item label {
+    padding: 8px 13px;      /* altura generosa */
+    font-size: 1rem;         /* texto legible */
+  }
+
+  /* Contenido del acordeón */
+  .accordion-content p {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  /* Icono + / - */
+  .icon {
+    font-size: 1.3rem;
+  }
+}
+
+/* ================== L (992–1199px) ================== */
+@media (min-width: 992px) and (max-width: 1199px) {
+  #explicacion-fases.fases-lunares-explicacion .fase-card  {
+      width: 90%;
+      max-width: 900px;
+      flex-direction: row;
+      gap: 2rem;
+      padding: 2rem;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion .col-lg-8 {
+      flex: 2;
+      text-align: left;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion .col-lg-4 {
+      flex: 1;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion img {
+      width: 90%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion h2{
+    font-size: 2rem;
+  }
+  #explicacion-fases.fases-lunares-explicacion p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: left;
+  }
+
+
+    
+/*seccion que lleva a link de interes */
+
+  .section-inner {
+    max-width: 700px;   /* un poco más angosto */
+    padding: 0 10px;    /* menos espacio lateral */
+  }
+
+  .links-interes h2 {
+    font-size: 2rem;  /* título más chico */
+  }
+
+  .links-interes p {
+    font-size: 0.9rem; /* párrafo más compacto */
+  }
+
+  .links-interes a {
+    padding: 6px 12px;  /* botones más chicos */
+    font-size: 0.9rem;
+    display: inline-block; /* siguen en fila, pero más compactos */
+  }
+
+
+   /*--Acordeon responsivo*/
+  /* Sección FAQ */
+  .faq-section {
+    padding: 28px 30px;      /* más espacio vertical y lateral */
+  }
+
+  .faq-section h2 {
+    font-size: 2.4rem;         /* título más grande */
+    margin-bottom: 22px;     /* separación debajo */
+  }
+
+  /* Rectángulo del acordeón */
+  .accordion-item {
+    max-width: 60%;        /* ancho contenido más amplio */
+    margin: 0 auto 12px;     /* centrado horizontal y margen inferior */
+  }
+
+  /* Encabezado del item */
+  .accordion-item label {
+    padding: 10px 15px;      /* altura un poco más generosa */
+    font-size: 1rem;         /* texto legible */
+  }
+
+  /* Contenido del acordeón */
+  .accordion-content p {
+    font-size: 0.95rem;      /* texto ligeramente más grande */
+    line-height: 1.5;        /* legible */
+  }
+
+  /* Icono + / - */
+  .icon {
+    font-size: 1.3rem;
+  }
+}
+
+/* ================== XL (1200–1399px) ================== */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  #explicacion-fases.fases-lunares-explicacion .fase-card  {
+      width: 80%;
+      max-width: 1200px;
+      padding: 2rem;
+  }
+    #explicacion-fases.fases-lunares-explicacion .col-lg-8 {
+      flex: 2;
+      text-align: left;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion .col-lg-4 {
+      flex: 1;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion img {
+      width: 90%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion h2{
+    font-size: 2rem;
+  }
+  #explicacion-fases.fases-lunares-explicacion p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      text-align: left;
+  }
+
+  /*seccion que lleva a link de interes */
+
+  .section-inner {
+    max-width: 700px;   /* un poco más angosto */
+    padding: 0 10px;    /* menos espacio lateral */
+  }
+
+  .links-interes h2 {
+    font-size: 2rem;  /* título más chico */
+  }
+
+  .links-interes p {
+    font-size: 0.9rem; /* párrafo más compacto */
+  }
+
+  .links-interes a {
+    padding: 6px 12px;  /* botones más chicos */
+    font-size: 0.9rem;
+    display: inline-block; /* siguen en fila, pero más compactos */
+  }
+}
+
+/* ================== XXL (1400px y más) ================== */
+@media (min-width: 1400px) {
+  #explicacion-fases.fases-lunares-explicacion .fase-card  {
+      width: 80%;
+      max-width: 1400px;
+      padding: 2rem;
+  }
+    #explicacion-fases.fases-lunares-explicacion .col-lg-8 {
+      flex: 2;
+      text-align: left;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion .col-lg-4 {
+      flex: 1;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion img {
+      width: 90%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  #explicacion-fases.fases-lunares-explicacion h2{
+    font-size: 2rem;
+  }
+  #explicacion-fases.fases-lunares-explicacion p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      text-align: left;
+  }
+
+    /*seccion que lleva a link de interes */
+
+  .section-inner {
+    max-width: 700px;   /* un poco más angosto */
+    padding: 0 10px;    /* menos espacio lateral */
+  }
+
+  .links-interes h2 {
+    font-size: 2rem;  /* título más chico */
+  }
+
+  .links-interes p {
+    font-size: 0.9rem; /* párrafo más compacto */
+  }
+
+  .links-interes a {
+    padding: 6px 12px;  /* botones más chicos */
+    font-size: 0.9rem;
+    display: inline-block; /* siguen en fila, pero más compactos */
+  }
+}

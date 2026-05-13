@@ -1,0 +1,166 @@
+/*Aca tengo la tabla dinamica y el calendario dinamico, esto pertenece al INDEX.HTML*/
+/*Tengo los codigos del css y los medias para ajustar el tamaño a cada dispositivo*/
+
+
+/* ===================== TABLA DE EVENTOS ===================== */
+.table {
+    background-color: #f5c518;
+    border: 2px solid #f5c518;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 1 1 1 2px #f5c518;
+}
+
+.table th, .table td {
+    color: #F9FAFA;
+    border-color: #f5c518;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f5c518;
+}
+
+/* ===================== FULLCALENDAR ===================== */
+
+#calendar {
+  font-size: 0.85rem;         /* un poco más grande */
+  max-width: 380px;
+  margin: auto;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 0 0 2px #f5c518;
+}
+
+.fc .fc-col-header-cell-cushion { 
+  font-size: 1rem; 
+  color: #f5c518; 
+  padding: 4px 2px; /* un poquito más de padding */
+}
+
+.fc .fc-day-today {
+  background: rgba(245, 197, 24, 0.22) !important;
+  border: 2px solid #f5c518 !important;
+  box-shadow: 0 0 10px rgba(245, 197, 24, 0.5);
+}
+
+.fc .fc-daygrid-day-number { 
+  font-size: 1rem; 
+  color: #f5c518; 
+  padding: 4px;      /* aumenta ligeramente */
+}
+
+.fc .fc-daygrid-day { 
+  min-height: 65px;  /* sube un poco la celda para que se vea el sábado */
+}
+
+.fc .fc-daygrid-event { 
+  font-size: 0.8rem; 
+  padding: 1px 2px; 
+}
+
+.fc .fc-toolbar button { 
+  font-size: 0.75rem; 
+  color: #f5c518; 
+  padding: 2px 6px; 
+}
+
+
+
+
+/* ===================== POPOVERS COMPACTOS ===================== */
+/* Popover general */
+.popover {
+  max-width: 200px;      /* se mantiene para PC */
+  font-size: 0.8rem;
+  word-wrap: break-word;
+  white-space: normal;
+  z-index: 9999;
+}
+
+/* Popover header */
+.popover-header {
+  font-size: 0.85rem;
+  background-color: #1a1a1a;
+  color: #f5c518;
+  border-bottom: 1px solid #f5c518;
+}
+
+/* Popover body */
+.popover-body {
+  font-size: 0.8rem;
+  background-color: #212529;
+  color: #F9FAFA;
+  max-height: 150px;    /* límite de alto para móviles */
+  overflow-y: auto;     /* scroll si el contenido es largo */
+}
+
+/* Estrella del evento */
+.estrella-evento {
+  color: #f5c518 !important;
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 4px;
+}
+
+
+/* Ajuste de flechas */
+.popover.bs-popover-top .popover-arrow::before { border-top-color: #1a1a1a; }
+.popover.bs-popover-top .popover-arrow::after { border-top-color: #2c2c2c; }
+
+
+/* ===================== BOTONES HOY / IR A FECHA ===================== */
+#todayBtn, #irFechaBtn {
+  background-color: #f5c518;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  margin: 2px;
+  cursor: pointer;
+}
+
+#todayBtn:hover, #irFechaBtn:hover { 
+  background-color: #f5c518; 
+}
+
+
+
+
+/* Ajuste para móviles XS-SM */
+@media (max-width: 576px) {
+  .popover {
+    max-width: 90vw;        /* ocupa casi toda la pantalla */
+    font-size: 0.75rem;     /* un poquito más pequeño */
+    margin: 0 5vw;          /* margen lateral */
+  }
+  .popover-body {
+    max-height: 120px;      /* límite de alto menor */
+  }
+}
+
+/*tamaño S*/
+@media (min-width: 576px) and (max-width: 767px) {
+
+  .popover {
+    max-width: 300px;  /* más ancho para móviles */
+    font-size: 0.9rem;
+  }
+  .popover-body {
+    max-height: 300px;
+  }
+
+}
+
+/*tamaño M*/
+@media (max-width: 768px) {
+  .popover {
+    max-width: 260px; /* más ancho en móviles */
+    font-size: 0.9rem;
+  }
+  .popover-body {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}
+
+

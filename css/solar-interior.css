@@ -1,0 +1,819 @@
+/*sistema solar interior, contiene al sol,mercurio,venus, la tierra, marte y el cinturon de asteroides ademas del cometa */
+
+body {
+  background: #080e24 url("https://neography.com/experiment/circles/solarsystem/bg.jpg") repeat;
+  color: #626668;
+  margin: 0;
+  padding: 0;
+}
+
+/* ====== Titulo =====*/
+
+.interior-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem;
+    color: #f9fafa; 
+    /* EFECTO DE BRILLO RESTAURADO A TU CONFIGURACIÓN ORIGINAL */
+    text-shadow: 0 0 10px gray, 0 0 20px #142b44, 0 0 30px #fff; 
+    margin-bottom: 15px;
+}
+
+
+.interior-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: #f9fafa;
+  text-shadow: 0 0 5px gray; /* un brillo sutil */
+}
+
+/* === Section sistema solar con la descripcion ===*/
+.system-section {
+  padding: 60px 0; /* separa la sección arriba y abajo */
+}
+
+.system-section .section-content {
+  width: 100%;        /* ocupa todo el ancho del container */
+  max-width: 1000px;  /* opcional: un límite para pantallas muy grandes */
+  margin: 0 auto;     /* centra horizontalmente dentro del container */
+}
+
+.system-section h2 {
+  color: #f5c518;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.system-section p {
+  color: #f9fafa;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.system-section strong {
+  color: #f5c518;
+}
+
+/* ====== CONTENEDOR GENERAL ====== */
+
+section.clearfix {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* padding: 2rem; esto me lo aleja del navbar*/ 
+  padding: 0.5rem 2rem 2rem; /* arriba 1rem, costados 2rem, abajo 2rem */
+
+}
+
+/* ====== SISTEMA SOLAR ====== */
+ul.solarsystem {
+  position: relative;
+  width: 650px;
+  height: 650px;
+  list-style: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+ul.solarsystem li {
+  text-indent: -9999px;
+  display: block;
+  position: absolute;
+  border: 1.5px solid #394057;
+  border-radius: 50%;
+  animation: orbit linear infinite;
+}
+
+ul.solarsystem li span {
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Sol */
+
+ul.solarsystem li.sun {
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #ffd966, #ff9900);
+  top: 310px;
+  left: 310px;
+  border: none;
+  box-shadow: 0 0 50px #c90;
+  z-index: 100;
+  animation: none;
+}
+
+/* 🛑 NUEVA REGLA CRÍTICA para el Sol: Anular el span interno */
+ul.solarsystem li.sun span {
+    display: none; /* Asegura que el span no se dibuje */
+}
+
+/* Si quieres que brille al hacer clic, añade esta regla (como en la Opción 1): */
+ul.solarsystem li.sun.highlight {
+    box-shadow: 0 0 80px 15px yellow !important; 
+}
+
+
+/* Planetas */
+ul.solarsystem li.mercury {
+  width: 42px;
+  height: 42px;
+  top: 304px;
+  left: 304px;
+  animation-duration: 2s;
+}
+ul.solarsystem li.mercury span {
+  background: #b6bac5;
+  top: 16px;
+  left: 38px;
+  width:7px;
+  height:7px;
+}
+
+ul.solarsystem li.venus {
+  width: 106px;
+  height: 106px;
+  top: 272px;
+  left: 272px;
+  animation-duration: 6s;
+}
+
+ul.solarsystem li.venus span {
+  background: #bf8639;
+  top: 48px;
+  left: 98px;
+}
+
+ul.solarsystem li.earth {
+  width: 174px;
+  height: 174px;
+  top: 238px;
+  left: 238px;
+  animation-duration: 10s;
+}
+ul.solarsystem li.earth span {
+  background: #06c;
+  top: 82px;
+  left: 169px;
+  animation: moon 1s linear infinite;
+}
+ul.solarsystem li.earth span.moon {
+  width: 4px;
+  height: 4px;
+  background: #ccc;
+  top: 12px;
+  left: 12px;
+}
+
+ul.solarsystem li.mars {
+  width: 260px;
+  height: 260px;
+  top: 195px;
+  left: 195px;
+  animation-duration: 18s;
+}
+ul.solarsystem li.mars span {
+  background: #aa4200;
+  width: 8px;
+  height: 8px;
+  top: 0;
+  left: 160px;
+}
+
+/*esto me permite cambiar el diseño de la elipse del cometa*/
+ul.solarsystem li.comet-orbit {
+  width: 420px !important;
+  height: 140px !important;
+  /* border: 2px dashed #f5c518 !important; */
+  animation: none !important;
+  top: 260px !important;
+  left: -55px !important;
+  border-radius: 50% !important;
+}
+
+
+/* 🌑 Cinturón de Asteroides con brillo y textura */
+ul.solarsystem li.asteroids_meteorids {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  top: 65px;
+  left: 65px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+
+  /* Mantiene el borde punteado del cinturón */
+  border: 4px dotted rgba(99, 77, 63, 0.5); /* tono #634d3f con transparencia */
+
+  /* Fondo difuso del cinturón, similar al transneptunian pero marrón */
+  background: radial-gradient(
+    circle,
+    transparent 55%,
+    rgba(99, 77, 63, 0.15) 60%,
+    rgba(99, 77, 63, 0.25) 68%,
+    rgba(99, 77, 63, 0.15) 75%,
+    transparent 85%
+  );
+
+  /* Halo exterior e interior, simulando polvo brillante */
+  box-shadow:
+    0 0 18px 6px rgba(99, 77, 63, 0.25),    /* brillo exterior */
+    inset 0 0 18px rgba(99, 77, 63, 0.15);  /* brillo interior */
+
+  opacity: 0.85;
+  animation:
+    orbit 52s linear infinite,
+    belt-glow-asteroids 12s ease-in-out infinite alternate;
+}
+
+/* ✨ Brillo animado marrón-rojizo */
+@keyframes belt-glow-asteroids {
+  0% {
+    box-shadow:
+      0 0 18px 6px rgba(99, 77, 63, 0.2),
+      inset 0 0 18px rgba(99, 77, 63, 0.1);
+    opacity: 0.8;
+  }
+  100% {
+    box-shadow:
+      0 0 28px 10px rgba(150, 120, 90, 0.4),
+      inset 0 0 22px rgba(120, 90, 70, 0.25);
+    opacity: 1;
+  }
+}
+
+/* 🌠 Asteroide individual (punto que gira) */
+ul.solarsystem li.asteroids_meteorids span {
+  background: radial-gradient(circle, #fce5cd, #8b5e3c); /* marrón con brillo */
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(255, 220, 180, 0.7);
+  top: -15px;
+  left: 257px;
+  animation: none;
+}
+
+/* 💫 Efecto cuando el cinturón está resaltado */
+ul.solarsystem li.asteroids_meteorids.highlight {
+  box-shadow:
+    0 0 25px 8px rgba(150, 120, 90, 0.7),
+    inset 0 0 25px rgba(120, 90, 70, 0.5);
+  border: 2px solid rgba(150, 120, 90, 0.5);
+}
+
+
+/* ============================= */
+/* Órbita del cometa (fija)      */
+/* ============================= */
+.comet {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f9fafa, #a4c2f4);
+  box-shadow: 0 0 15px #f9fafa;
+  z-index: 10; 
+  pointer-events: none;
+}
+
+.comet.comet-far {
+  transform: scale(1) rotate(0deg);
+  background-color: #fff;
+  box-shadow: 0 0 10px #f9fafa;
+}
+
+.comet.comet-close {
+  transform: scaleX(2) scaleY(0.8); /* se aplana horizontalmente */
+  background-color: #ffcc33;         /* color brillante */
+  box-shadow: 0 0 20px 10px rgba(255, 200, 50, 0.8); /* cola/brillo */
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.comet .tail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 4px;
+  background: rgba(255, 200, 50, 0.7);
+  transform-origin: left center;
+  transform: translate(-50%, -50%) rotate(180deg);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Efecto de resaltado al pasar el mouse */
+.comet:hover {
+  transform: scale(1.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 30px #f9fafa;
+}
+
+li.highlight .comet {
+  box-shadow: 0 0 10px yellow;
+  background-color: yellow;
+}
+
+
+
+/* ====== DESCRIPCIONES ====== */
+ul#descriptions {
+  list-style: none;
+  padding: 0;
+  width: 400px;
+  position: absolute;
+  right: 10rem; /* más hacia el extremo derecho */
+  top: 2rem;
+  margin: 250px 0 0 0; /* 🔹 esto baja toda la columna de nombres */
+}
+
+ul#descriptions li {
+  margin-bottom: 0.5rem; /* estaban muy separados, ahora más juntos */
+  position: relative;
+}
+
+ul#descriptions h2 {
+  cursor: pointer;
+  color: #386077;
+  transition: all 0.2s ease-in;
+  font-size: 20px;
+  margin: 0;
+  text-align: right; /* alineados a la derecha */
+}
+
+ul#descriptions h2:hover {
+  color: #f5c518;
+  transform: scale(1.08);
+}
+
+ul#descriptions li p {
+  background: #0f132c;
+  border: 1px solid #1c203c;
+  border-radius: 5px;
+  color: #f9fafa;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0.25rem 0 0;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in;
+  width: 320px;
+  position: absolute;
+  left: -70px; /* se muestra hacia la izquierda */
+  top: 0;
+}
+
+ul#descriptions h2:hover + p {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
+/* ====== ANIMACIONES ====== */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes moon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* ==== EFECTO DE RESALTADO DE PLANETA ==== */
+ul.solarsystem li.highlight span {
+  box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.7);
+  transform: scale(1.3);
+  transition: all 0.3s ease;
+}
+
+/* =================== Responsivos ==================== */
+
+/* ================== XS (Extra-Small) ================== */
+
+@media (max-width: 576px) {
+  /* ====== Contenedor general ====== */
+  section.clearfix {
+    flex-direction: column;   /* sistema solar arriba, nombres debajo */
+    align-items: center;      /* centrado horizontal */
+    gap: 1.2rem;
+    padding: 2rem 1rem 1rem;  /* aire con navbar arriba */
+    margin: 0 auto;
+  }
+
+  /* ====== Sistema solar ====== */
+  ul.solarsystem {
+    transform: scale(0.45);       /* reduce tamaño del mapa */
+    transform-origin: center center;
+    margin: -10rem auto 0;       /* sube un poco el mapa sin tocar nombres */
+  }
+
+  /* ====== Lista de nombres ====== */
+  ul#descriptions {
+    position: static;             /* fluyen debajo del mapa */
+    width: 95%;
+    margin: 1rem auto 0;          /* separación del mapa */
+    text-align: center;
+    margin: -11rem auto 0; 
+  }
+
+  ul#descriptions li {
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  ul#descriptions h2 {
+    font-size: 18px;
+    margin: 0.3rem 0;
+    text-align: center;
+  }
+
+  /* ====== Descripciones ====== */
+  ul#descriptions li p {
+    position: static;              /* ya no flotante */
+    width: 100%;                   /* ocupa todo el ancho del contenedor */
+    max-width: none;               /* sin límite artificial */
+    margin: 0.5rem auto 1rem;
+    padding: 0.8rem;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in;
+  }
+
+  ul#descriptions h2:hover + p,
+  ul#descriptions h2:active + p {  /* también permite click táctil */
+    opacity: 1;
+    visibility: visible;
+  }
+
+}
+
+/* ================== S (Small) ================== */
+
+@media (min-width: 576px) and (max-width: 767px) {
+  /* ====== Contenedor general ====== */
+  section.clearfix {
+    flex-direction: column;   /* sistema solar arriba, nombres debajo */
+    align-items: center;      /* centrado horizontal */
+    gap: 1.5rem;
+    padding: 2rem 1rem 1rem;  /* aire con navbar */
+    margin: 0 auto;
+  }
+
+  /* ====== Sistema solar ====== */
+  ul.solarsystem {
+    transform: scale(0.6);       /* un poco más grande que XS */
+    transform-origin: center center;
+    margin: -6rem auto 0;        /* sube un poco el mapa */
+  }
+
+  /* ====== Lista de nombres ====== */
+  ul#descriptions {
+    position: static;             /* fluyen debajo del mapa */
+    width: 90%;
+    margin: 1rem auto 0;          /* separación del mapa */
+    text-align: center;
+  }
+
+  ul#descriptions li {
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  ul#descriptions h2 {
+    font-size: 19px;              /* un poco más grande que XS */
+    margin: 0.3rem 0;
+    text-align: center;
+  }
+
+  /* ====== Descripciones ====== */
+  ul#descriptions li p {
+    position: static;             /* debajo del nombre */
+    width: 85%;
+    max-width: 400px;
+    margin: 0.3rem auto 0;
+    padding: 0.9rem;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: justify;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in;
+  }
+
+  ul#descriptions h2:hover + p {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ================== M (Medium) ================== */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* ====== Contenedor general ====== */
+  section.clearfix {
+    flex-direction: column;   /* sistema solar arriba, nombres debajo */
+    align-items: center;      /* centrado horizontal */
+    gap: 1.8rem;
+    padding: 2rem 1rem 1rem;  /* aire con navbar */
+    margin: 0 auto;
+  }
+
+  /* ====== Sistema solar ====== */
+  ul.solarsystem {
+    transform: scale(0.8);       /* más grande que S */
+    transform-origin: center center;
+    margin: -4rem auto 0;        /* sube un poco menos que S */
+  }
+
+  /* ====== Lista de nombres ====== */
+  ul#descriptions {
+    position: static;             /* fluyen debajo del mapa */
+    width: 85%;
+    margin: 1rem auto 0;          /* separación del mapa */
+    text-align: center;
+  }
+
+  ul#descriptions li {
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  ul#descriptions h2 {
+    font-size: 20px;              /* un poco más grande que S */
+    margin: 0.4rem 0;
+    text-align: center;
+  }
+
+  /* ====== Descripciones ====== */
+  ul#descriptions li p {
+    position: static;             /* debajo del nombre */
+    width: 80%;
+    max-width: 450px;
+    margin: 0.3rem auto 0;
+    padding: 1rem;
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: justify;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in;
+  }
+
+  ul#descriptions h2:hover + p {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+/* ================== L (Large) ================== */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* ====== Contenedor general: Empuja los elementos a los extremos ====== */
+    section.clearfix {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 3rem;
+      padding: 2rem 1.5rem;
+      margin: 0 auto;
+      max-width: 1150px;
+      position: relative; /* clave */
+      overflow-x: hidden; 
+    }
+
+    /* ====== Sistema solar ====== */
+    ul.solarsystem {
+      transform: scale(0.85);
+      transform-origin: center center;
+      margin: 0;
+      position: relative; /* clave */
+      top: 0;
+      left: -15px;   /* 🔹 mueve el mapa hacia la izquierda (ajustá este valor) */
+    }
+
+    /* ====== Lista de nombres: Posicionamiento base ====== */
+    ul#descriptions {
+      position: relative;
+      top: -60px;         /* sube la lista */
+      margin-left: 8rem;  /* 🔹 más a la derecha (antes era 2rem) */
+      width: 300px;
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      flex-shrink: 0;
+    }
+
+    /* 🚀 COMPRESIÓN VERTICAL Y POSICIONAMIENTO BASE */
+    ul#descriptions li {
+        margin-bottom: 0.5rem; /* Menos espacio entre items */
+        position: relative;     
+        display: block;
+    }
+
+    ul#descriptions h2 {
+      font-size: 18px;
+      margin: 0.3rem 0;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* ====== Descripciones (Pop-up) ====== */
+    ul#descriptions li p {
+      position: absolute;
+      right: 110%;        /* 🔹 aparece a la izquierda del nombre */
+      top: 0;
+      width: 240px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 6px;
+      padding: 0.7rem;
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+
+
+    ul#descriptions h2:hover + p {
+    opacity: 1;
+    visibility: visible;
+    }
+}
+
+/* ================== XL (Extra-Large) ================== */
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+    /* ====== Contenedor general: Mantiene los elementos separados a los extremos ====== */
+    section.clearfix {
+        flex-direction: row;
+        /* CLAVE: Mantenemos la separación extrema */
+        justify-content: space-between; 
+        align-items: flex-start;
+        /* Aumentamos el padding para dar más "aire" lateral */
+        padding: 3rem 3rem 3rem; 
+        margin: 0 auto;
+    }
+
+    /* ====== Sistema solar: Aumentamos la escala para aprovechar el espacio ====== */
+    ul.solarsystem {
+        /* Aumentamos el mapa. Si 0.7 es L, probemos con 0.9 para XL. */
+        transform: scale(0.9); /* <--- AJUSTE CLAVE */
+        transform-origin: center center;
+        margin: 0;
+    }
+
+    /* ====== Lista de nombres: Posicionamiento base y más ancho ====== */
+    ul#descriptions {
+        position: static;
+        /* Aumentamos el ancho de la columna de descripciones */
+        width: 400px; /* Incrementamos de 350px a 400px */
+        margin: 0;
+        /* Mantenemos el texto alineado a la derecha */
+        text-align: right;
+        /* Reducimos un poco el margen superior para que esté más centrado con el mapa escalado */
+        margin: 50px 0 0 0; /* Ajustamos de 75px a 50px */
+    }
+
+    /* 🚀 POSICIONAMIENTO BASE */
+    ul#descriptions li {
+        margin-bottom: 0.8rem; /* Un poco más de espacio vertical entre items */
+        position: relative; 
+        display: block;
+    }
+
+    ul#descriptions h2 {
+        font-size: 20px; /* Títulos ligeramente más grandes */
+        margin: 0.2rem 0;
+        text-align: right;
+    }
+
+    /* ====== Descripciones (Pop-up) ====== */
+    ul#descriptions li p {
+        /* Mantenemos la lógica de pop-up a la IZQUIERDA */
+        position: absolute; 
+        /* Ajustamos la posición right y el tamaño para el ancho de 400px */
+        right: 115px; /* Movemos un poco más a la izquierda */
+        margin-right: 20px; /* Espacio de separación del nombre */
+        left: auto;
+        top: 0; 
+        
+        width: 350px; /* Aumentamos el ancho del pop-up (de 300px a 350px) */
+        max-width: 350px;
+        margin: 0; 
+        padding: 1rem; /* Más padding interno */
+        font-size: 15px; /* Letra ligeramente más grande */
+        line-height: 1.6;
+        text-align: left;
+        
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in;
+    }
+
+
+    ul#descriptions h2:hover + p {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* ================== XXL (Extra-Extra-Large) ================== */
+
+/* Aplica para todas las pantallas con un ancho mínimo de 1400px */
+@media (min-width: 1400px) {
+    /* ====== Contenedor general: Mantiene los elementos separados a los extremos ====== */
+    section.clearfix {
+        flex-direction: row;
+        /* Mantenemos la separación extrema (mapa a la izquierda, lista a la derecha) */
+        justify-content: space-between; 
+        align-items: flex-start;
+        /* Damos aún más "aire" con más padding */
+        padding: 4rem 4rem 4rem; /* Incrementamos el padding de 3rem a 4rem */
+        margin: 0 auto;
+    }
+
+    /* ====== Sistema solar: Aumentamos la escala aún más que en XL (0.9) ====== */
+    ul.solarsystem {
+        /* Aumentamos de 0.9 a 1.0 (tamaño base) o 1.1 para hacerlo más grande que el tamaño original */
+        transform: scale(1); /* <-- Puedes probar con 1.0 si no quieres que sea más grande que su tamaño base */
+        transform-origin: center center;
+        margin: 0;
+        left: -70px;
+    }
+
+    /* ====== Lista de nombres: Posicionamiento base y más ancho para la descripción ====== */
+    ul#descriptions {
+        position: static;
+        /* Aumentamos de 400px (XL) a 450px para el ancho de la lista */
+        width: 700px; 
+        margin: 0;
+        text-align: right;
+        /* Ajustamos el margen superior para que se alinee con el mapa más grande */
+        margin: 75px 0 0 0; /* Lo devolvemos al valor original de L, o ajusta a ojo */
+    }
+
+    /* 🚀 POSICIONAMIENTO BASE */
+    ul#descriptions li {
+        margin-bottom: 1rem; /* Más espacio vertical */
+        position: relative; 
+        display: block;
+    }
+
+    ul#descriptions h2 {
+        /* Ligeramente más grande que en XL (20px) */
+        font-size: 22px; 
+        margin: 0.3rem 0;
+        text-align: right;
+    }
+
+    /* ====== Descripciones (Pop-up) ====== */
+    ul#descriptions li p {
+        /* Mantenemos la lógica de pop-up a la IZQUIERDA */
+        position: absolute; 
+        /* Ajustamos right y el tamaño para el ancho de 450px */
+        right: 200px;  /* Movemos un poco más a la izquierda */
+        margin-right: 20px; 
+        left: auto;
+        top: 0; 
+        
+        width: 400px; /* Aumentamos el ancho del pop-up (de 350px a 400px) */
+        max-width: 400px;
+        margin: 0; 
+        padding: 1.1rem; /* Más padding interno */
+        font-size: 16px; /* Letra ligeramente más grande */
+        line-height: 1.6;
+        text-align: left;
+        
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in;
+    }
+
+
+    ul#descriptions h2:hover + p {
+        opacity: 1;
+        visibility: visible;
+    }
+}

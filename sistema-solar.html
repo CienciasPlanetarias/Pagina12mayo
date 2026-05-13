@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Sistema Solar Interactivo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <!-- Tooltip (Bootstrap) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fuentes Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;1,700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/solar-interior.css">
+ 	  <link rel="stylesheet" href="css/solar-exterior.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+<body>
+
+	    <!-- HEADER SUPERIOR -->
+    <header id="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+            <img src="img/Logo.png" alt="Logo de la oficina">
+            </a>
+            <h1 class="office-name">Gabinete de Ciencias Planetarias</h1>
+        </div>
+    </header>
+
+
+    <!--barra de navegacion-->
+
+        <nav id="main-nav">
+            <div class="container nav-bar">
+                <a href="index.html" class="navItem">Inicio</a>
+                <a href="eventos.html" class="navItem">Eventos</a>
+                <div class="dropdown">
+                <a href="#" class="navItem dropbtn">Recursos</a>
+                <div class="dropdown-content">
+                    <a href="glosario.html">Glosario</a>
+                    <a href="links.html">Link de interes</a>
+                    <a href="cielo.html">Mapas del cielo</a>
+                    <a href="#">Material bibliografico</a>
+                </div>
+                </div>
+
+                <div class="dropdown">
+                <a href="#" class="navItem dropbtn">Astronomía?</a>
+                <div class="dropdown-content">
+                    <a href="#">Asteroides</a>
+                    <a href="#">Constelaciones</a>
+                    <a href="eclipses.html">Eclipses</a>
+                    <a href="#">Estaciones</a>
+                    <a href="fases-lunares.html">Fases Lunares</a>
+                    <a href="sistema-solar.html">Sistema Solar</a>
+                </div>
+                </div>
+
+                <a href="#contacto" class="navItem">Contacto</a>
+            </div>
+        </nav>
+
+    <!--- Sistema solar contenido-->
+
+    <div class="container"> 
+      <section class="system-section">
+        <div class="section-content">
+          <h2>El sistema solar</h2>
+          <p>El sistema solar está compuesto por el Sol, ocho planetas, sus satélites, asteroides, cometas y polvo cósmico. El Sol, una estrella de tipo G, es el centro de nuestro sistema y la fuente de luz y calor que hace posible la vida en la Tierra.</p>
+
+          <p>Los planetas se dividen en dos grupos: los <strong>planetas interiores</strong>, que son rocosos (Mercurio, Venus, Tierra y Marte), y los <strong>planetas exteriores</strong>, que son gigantes gaseosos (Júpiter, Saturno, Urano y Neptuno). Cada planeta orbita alrededor del Sol siguiendo trayectorias elípticas.</p>
+
+          <p>Además de los planetas, existen cuerpos más pequeños como los <strong>asteroides</strong> en el cinturón entre Marte y Júpiter, los <strong>cometas</strong> que provienen de la nube de Oort y el cinturón de Kuiper, y los <strong>satélites naturales</strong> que acompañan a muchos planetas, siendo la Luna de la Tierra el ejemplo más conocido.</p>
+
+          <p>Este conjunto de cuerpos celestes interactúa mediante la gravedad, lo que mantiene las órbitas estables y permite fenómenos como los eclipses, las fases de la Luna y la rotación de los planetas sobre su eje.</p>
+        </div>
+      </section>
+    </div>
+
+
+
+    <section id="interior-section" class="text-center mt-5 p-3">
+      <h3 class="interior-title">Sistema Solar Interior</h3>
+    </section>
+
+
+    <!--Sistema solar interior-->
+    <section class="clearfix">
+      <!-- Contenedor del mapa del sistema solar -->
+      <div class="solar-map">
+        <ul class="solarsystem">
+          <li class="sun"><a href="#sun"><span>Sol</span></a></li>
+          <li class="mercury"><a href="#mercury"><span>Mercurio</span></a></li>
+          <li class="venus"><a href="#venus"><span>Venus</span></a></li>
+          <li class="earth"><a href="#earth"><span>Tierra<span class="moon"> &amp; Moon</span></span></a></li>
+          <li class="mars"><a href="#mars"><span>Marte</span></a></li>
+          <li class="asteroids_meteorids"><span>Asteroides</span></li>
+          <li class="comet-orbit">
+            <div class="comet"></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 🌍 Descripciones del sistema solar -->
+      <div class="solar-names">
+        <ul id="descriptions">
+          <li>
+            <h2 id="sun">Sol</h2>
+            <p>El Sol es una estrella: una enorme esfera de gases incandescentes en el centro de nuestro sistema solar. Su energía y calor hacen posible la vida en la Tierra, y su influencia se extiende más allá de Neptuno y Plutón. Aunque es esencial para nosotros, es solo una de las miles de millones de estrellas de la galaxia Vía Láctea.</p>
+          </li>
+
+          <li>
+            <h2 id="mercury">Mercurio</h2>
+            <p>Mercurio, abrasado por el Sol, es apenas más grande que la Luna. Tiene una atmósfera muy tenue, por lo que su superficie está llena de cráteres. Durante el día alcanza temperaturas extremas y por la noche descienden muy por debajo de cero. Un día en Mercurio dura aproximadamente 176 días terrestres, mientras que completa una órbita alrededor del Sol cada 88 días. Carece de satélites naturales.</p>
+          </li>
+
+          <li>
+            <h2 id="venus">Venus</h2>
+            <p>Venus es el segundo planeta del sistema solar y es muy parecido a la Tierra en tamaño, pero con un ambiente extremadamente hostil. Tiene una atmósfera densa y tóxica que provoca un fuerte efecto invernadero, elevando sus temperaturas a niveles muy altos. Un día en Venus (una rotación completa) dura aproximadamente 243 días terrestres, mientras que tarda unos 225 días terrestres en dar una vuelta alrededor del Sol. Además, gira en sentido contrario al de la mayoría de los planetas. Junto con Mercurio es otro planeta que no tiene satélites naturales.</p>
+          </li>
+
+          <li>
+            <h2 id="earth">Tierra</h2>
+            <p>La Tierra es nuestro hogar y el único planeta conocido con vida. Su gran cantidad de agua líquida, junto con una atmósfera que protege y regula la temperatura, permite la existencia de una enorme diversidad de seres vivos. Un día dura 24 horas y tarda 365 días en completar una vuelta alrededor del Sol.</p>
+          </li>
+
+          <li>
+            <h2 id="mars">Marte</h2>
+            <p>Marte es un planeta rocoso conocido como el “planeta rojo” por el color de su superficie. Presenta montañas, valles y casquetes polares de hielo, lo que indica que en el pasado pudo haber tenido agua. Un día en Marte dura unas 24,6 horas, muy similar al de la Tierra, y tarda 687 días terrestres en dar una vuelta alrededor del Sol. Aunque hoy es un mundo frío y seco, sigue siendo objeto de estudio por la posibilidad de que haya albergado vida.</p>
+          </li>
+
+          <li>
+            <h2 id="asteroids_meteorids">Asteroides</h2>
+            <p>El cinturón de asteroides es una región ubicada entre Marte y Júpiter, donde se concentran millones de cuerpos rocosos de formas irregulares. El objeto más grande es Ceres, considerado un planeta enano. Esta zona marca la transición entre los planetas rocosos y los gigantes gaseosos.</p>
+          </li>
+          <li>
+            <h2 id="comet">Cometa</h2>
+            <p>Los cometas son cuerpos celestes formados por hielo, polvo y roca que orbitan el Sol en trayectorias muy alargadas, pasando por un punto cercano (perihelio) y otro lejano (afelio). Al acercarse al Sol, el calor libera gases y polvo que forman una nube brillante y una cola visible. Su color varía según los materiales: el polvo genera tonos amarillentos y los gases, azulados o verdosos.</p>
+          </li>
+        </ul>
+      </div>
+
+  </section>
+
+        <section id="exterior-section" class="text-center mt-5">
+            <h2 class="exterior-title">Sistema Solar Exterior</h2>
+        </section>
+
+
+    <!--Sistema solar exterior-->
+    <section class="exterior-clearfix">
+
+      <!-- Contenedor del mapa del sistema solar -->
+      <div class="solar-map">
+        <ul class="solar-exterior">
+          <li class="sun"><a href="#sun"><span>Sol</span></a></li>
+          <li class="jupiter">
+            <a href="#jupiter"><span>Júpiter</span></a>
+
+            <!-- CONTENEDOR -->
+            <div class="orbit-jupiter">
+              <div class="luna io" title="Ío"></div>
+              <div class="luna europa" title="Europa"></div>
+              <div class="luna ganimedes" title="Ganimedes"></div>
+              <div class="luna calisto" title="Calisto"></div>
+            </div>
+          </li>
+
+          <li class="saturn">
+            <span class="ring-outer"></span>
+            <span class="ring-inner"></span>
+            <span class="planet"></span>
+          </li>
+          <li class="uranus"><a href="#uranus"><span>Urano</span></a></li>
+          <li class="neptune"><a href="#neptune"><span>Neptuno</span></a></li>
+          <li class="transneptunian-belt"></li>
+          <div class="transneptunian-belt-ring"></div>
+          <li class="comet-orbit2">
+            <div class="comet2"></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 🌍 Descripciones del sistema solar -->
+      <div class="solar-names">
+        <ul id="descriptions2">
+          <li>
+            <h2 id="sun">Sol</h2>
+            <p>El Sol es una estrella: una enorme esfera de gases incandescentes en el centro de nuestro sistema solar. Su energía y calor hacen posible la vida en la Tierra, y su influencia se extiende más allá de Neptuno y Plutón. Aunque es esencial para nosotros, es solo una de las miles de millones de estrellas de la galaxia Vía Láctea.</p>
+          </li>
+
+          <li>
+            <h2 id="jupiter">Jupiter</h2>
+            <p>Júpiter es el planeta más grande del sistema solar y posee numerosas lunas, incluyendo cuatro muy grandes que forman un sistema propio. Se encuentra a una distancia media de unos 778 millones de kilómetros del Sol. Un día en Júpiter dura aproximadamente 10 horas, y tarda cerca de 12 años terrestres en completar una órbita alrededor del Sol. Destaca la Gran Mancha Roja, una gigantesca tormenta activa desde hace siglos, con vientos muy intensos y un tamaño mayor que la Tierra.</p>
+          </li>
+
+          <li>
+            <h2 id="saturn">Saturno</h2>
+            <p>Saturno es un gigante gaseoso compuesto principalmente por hidrógeno y helio, famoso por sus impresionantes anillos. Es unas 755 veces más grande que la Tierra y se encuentra a unos 1.430 millones de kilómetros del Sol. Sus vientos pueden alcanzar velocidades de hasta 1.800 km/h, formando bandas visibles en su atmósfera. Un día en Saturno dura aproximadamente 10,7 horas, y tarda cerca de 29 años terrestres en completar una órbita alrededor del Sol.</p>
+          </li>
+
+          <li>
+            <h2 id="uranus">Urano</h2>
+            <p>Urano es el séptimo planeta del sistema solar y fue el primero descubierto con un telescopio, en 1781. Es un gigante gaseoso helado que se encuentra a unos 2.870 millones de kilómetros del Sol. Un día en Urano dura aproximadamente 17 horas, y tarda 84 años terrestres en completar una órbita. Se destaca por su inclinación extrema, ya que gira casi “acostado” sobre su eje.</p>
+          </li>
+
+          <li>
+            <h2 id="neptune">Neptuno</h2>
+            <p>Neptuno es el planeta más lejano del sistema solar, ubicado a unos 4.500 millones de kilómetros del Sol. Tarda aproximadamente 165 años terrestres en completar una órbita y no es visible a simple vista debido a su gran distancia. Es un gigante helado con vientos extremadamente fuertes, los más rápidos del sistema solar. Un día en Neptuno dura cerca de 16 horas.</p>
+          </li>
+
+          <li>
+            <h2 id="transneptunian-belt">Cinturón Transneptuniano</h2>
+            <p>El cinturón transneptuniano es una amplia región fría más allá de Neptuno, formada por miles de cuerpos helados y planetas enanos como Plutón, Haumea, Makemake y Eris. Se considera una zona clave para entender el origen y la formación del sistema solar.</p>
+          </li>
+          <li>
+            <h2 id="comet2">Cometa</h2>
+            <p>En las regiones externas del sistema solar, como el cinturón transneptuniano, los cometas permanecen fríos y poco activos. Desde allí recorren órbitas muy alargadas que los llevan hacia el interior, donde el calor del Sol los vuelve visibles al formar su característica cola.</p>
+          </li>
+        </ul>
+      </div>
+
+  </section>
+
+	
+
+
+    <!---footer con boton deslizante al principio-->
+
+    <!-- Botón volver arriba -->
+    <button id="back-to-top-btn" title="Volver arriba">↑</button>
+
+    <footer id="main-footer" class="footer w-100">
+        <div class="footer-container">
+        <!-- Texto izquierda -->
+        <div class="footer-text">
+            <p>Gabinete de Ciencias Planetarias</p>
+            <p>FCEFyN | Universidad Nacional de San Juan</p>
+        </div>
+
+        <!-- Imagen derecha -->
+        <div class="footer-right">
+            <img src="img/fondo.png" alt="Logo SIED" class="footer-logo">
+        </div>
+        </div>
+    </footer>
+
+    <!-- Tu JS -->
+
+  <script src="js/boton.js"></script> <!-- en este JS tengo los codigos del boton-->
+ 	<script src="js/solar-interior.js"></script>
+  <script src="js/solar-exterior.js"></script>
+  <script src="js/cometa-interior.js"></script>
+  <script src="js/cometa-exterior.js"></script>
+
+
+</body>
+</html>

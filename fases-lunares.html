@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fases de la luna</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <!-- FullCalendar CSS y JS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+
+    <!-- Tooltip (Bootstrap) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fuentes Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;1,700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="css/style.css"> <!--Estilo general-->
+    <link rel="stylesheet" href="css/lunas.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+</head>
+
+
+<body>
+
+        <!-- HEADER SUPERIOR -->
+      <header id="main-header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+            <img src="img/Logo.png" alt="Logo de la oficina">
+            </a>
+            <h1 class="office-name">Gabinete de Ciencias Planetarias</h1>
+        </div>
+      </header>
+
+
+        <!--barra de navegacion-->
+        <nav id="main-nav">
+          <div class="container nav-bar">
+            <a href="index.html" class="navItem">Inicio</a>
+            <a href="eventos.html" class="navItem">Eventos</a>
+            <div class="dropdown">
+              <a href="#" class="navItem dropbtn">Recursos</a>
+              <div class="dropdown-content">
+                <a href="glosario.html">Glosario</a>
+                <a href="links.html">Link de interes</a>
+                <a href="cielo.html">Mapas del cielo</a>
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <a href="#" class="navItem dropbtn">Astronomía</a>
+              <div class="dropdown-content">
+                <a href="eclipses.html">Eclipses</a>
+                <a href="fases-lunares.html">Fases Lunares</a>
+              </div>
+            </div>
+            <a href="creditos.html" class="navItem">Créditos</a>
+          </div>
+        </nav>
+
+  <!--Intro- Aca tengo la imagen principal de la pagina -->
+    <section class="intro-banner">
+      <img src="img/moon.webp" alt="Fases de la Luna" class="banner-img">
+    </section> 
+
+
+  <!--Aca va la descripcion del tema-->
+
+<!-- ===================== Sección dividida (Intro) ===================== -->
+    <div class="container"> 
+
+      <section class="seccion-informativa-fases">
+        <div class="container py-5">
+          <div class="row align-items-center">
+            <div class="col-xxl-12 bloque-texto-fases">
+              
+              <h1 class="titulo-fases">Fases Lunares</h1>
+              
+              <p class="descripcion-fases">
+                En nuestro sistema solar, solo el <strong>Sol</strong> brilla con luz propia. Su luz ilumina la mitad de la Tierra y se refleja en la <strong>Luna</strong>, creando la luz lunar. Según cómo la Luna se mueve en su órbita, vemos diferentes partes iluminadas: estas son las <strong>fases lunares</strong>.
+              </p>
+              
+              <p class="descripcion-fases">
+                Como la Tierra, la Luna tiene un lado de día y un lado de noche. El Sol siempre ilumina la mitad de la Luna, pero la parte visible desde la Tierra cambia durante su órbita. El ciclo se repite aproximadamente cada <strong>29,5 días</strong>.
+              </p>
+              
+              <p class="instruccion-fases">
+                Las cuatro fases principales son: <strong>Luna Nueva, Cuarto Creciente, Luna Llena y Cuarto Menguante</strong>.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <section id="hero-section" class="text-center mt-5">
+      <h1 class="hero-title">Todas las fases lunares</h1>
+      <!-- <p class="hero-subtitle">Aca hay que poner un subtitulo</p> -->
+    </section>
+
+<!-- ===================== Sección de explicación de las fases ===================== -->
+
+  <section id="explicacion-fases" class="fases-lunares-explicacion container mt-5">
+    <!-- Bloque Luna Nueva -->
+    <div class="row align-items-center mb-5 fase-card">
+      <div class="col-lg-8">
+        <h2>Luna Nueva</h2>
+        <p>
+          Durante esta fase, la Luna se encuentra en la misma zona del cielo que el Sol, saliendo y poniéndose al mismo tiempo que él.
+          La Luna no pasa directamente entre la Tierra y el Sol, debido a la inclinación de su órbita; 
+          desde nuestro punto de vista en la Tierra, solo se aproxima al Sol. </p>
+
+      </div>
+      <div class="col-lg-4">
+        <img src="img/new-moon.jpg" alt="Luna Nueva" class="img-fluid rounded">
+      </div>
+    </div>
+
+    <!-- Bloques cuarto creciente-->
+    <div class="row align-items-center mb-5 fase-card">
+      <div class="col-lg-8">
+        <h2>Cuarto Creciente</h2>
+          <p>La Luna muestra la mitad de su lado iluminado, sale al mediodía y se pone cerca de la medianoche, quedando alta en el cielo para una buena observación.</p>
+
+      </div>
+      <div class="col-lg-4">
+        <img src="img/first-quarter.jpg" alt="Cuarto Creciente" class="img-fluid rounded">
+      </div>
+    </div>
+
+        <!-- Bloques Luna llena-->
+    <div class="row align-items-center mb-5 fase-card">
+      <div class="col-lg-8">
+        <h2>Luna Llena</h2>
+          <p>La Luna Llena muestra toda su cara iluminada, sale al atardecer y se pone al amanecer, permaneciendo completamente visible durante un par de días.</p>
+
+      </div>
+      <div class="col-lg-4">
+        <img src="img/full.webp" alt="Luna Llena" class="img-fluid rounded">
+      </div>
+    </div>
+
+
+    <!-- Bloques Cuarto Menguante-->
+    <div class="row align-items-center mb-5 fase-card">
+      <div class="col-lg-8">
+        <h2>Cuarto Menguante</h2>
+        <p> La fase de Cuarto Menguante, sale alrededor de la medianoche y se pone al mediodía, siendo visible principalmente durante la madrugada y la mañana.</p>
+      </div>
+      <div class="col-lg-4">
+        <img src="img/third-quarter.webp" alt="Cuarto Menguante" class="img-fluid rounded">
+      </div>
+    </div>
+
+  </section>
+
+        <!---Seccion con link que lleva directo a links de interes (link.html)-->
+        <section class="links-interes">
+            <div class="section-inner text-center">
+                <h2>Más recursos y enlaces</h2>
+                <p class="texto-final">
+                    Si querés explorar más información sobre astronomía, accedé a nuestra página de <a href="links.html" class="link-final">links de interés</a>.
+                </p>
+            </div>
+        </section>
+
+
+
+    <section class="faq-section">
+    <div class="section-inner">
+      <h2>Preguntas Frecuentes</h2>
+
+      <div class="accordion-item">
+        <label>
+          ¿Por qué la Luna cambia de forma?
+          <span class="icon">+</span>
+        </label>
+
+        <div class="accordion-content">
+          <p>
+            La Luna no cambia realmente de forma. Las fases ocurren porque, desde la Tierra, vemos distintas partes iluminadas de la Luna mientras orbita alrededor de nuestro planeta.
+          </p>
+        </div>
+      </div>
+
+
+
+      <div class="accordion-item">
+        <label>
+          ¿Cuánto dura un ciclo lunar completo?
+          <span class="icon">+</span>
+        </label>
+
+        <div class="accordion-content">
+          <p>
+            Un ciclo completo de fases lunares dura aproximadamente 29,5 días, pasando por Luna Nueva, Cuarto Creciente, Luna Llena y Cuarto Menguante.
+          </p>
+        </div>
+      </div>
+
+
+
+      <div class="accordion-item">
+        <label>
+          ¿La Luna tiene luz propia?
+          <span class="icon">+</span>
+        </label>
+
+        <div class="accordion-content">
+          <p>
+            No. La Luna refleja la luz del Sol, y esa iluminación es la que observamos desde la Tierra durante las distintas fases lunares.
+          </p>
+        </div>
+      </div>
+
+
+
+      <div class="accordion-item">
+        <label>
+          ¿Por qué siempre vemos la misma cara de la Luna?
+          <span class="icon">+</span>
+        </label>
+
+        <div class="accordion-content">
+          <p>
+            La Luna tarda el mismo tiempo en girar sobre sí misma que en orbitar la Tierra, por eso siempre observamos prácticamente el mismo hemisferio lunar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!---footer con boton deslizante al principio-->
+
+  <!-- Botón volver arriba -->
+  <button id="back-to-top-btn" title="Volver arriba">↑</button>
+
+  <footer id="main-footer" class="footer w-100">
+    <div class="footer-container">
+      <!-- Texto izquierda -->
+      <div class="footer-text">
+        <p>Gabinete de Ciencias Planetarias</p>
+        <p>FCEFyN | Universidad Nacional de San Juan</p>
+      </div>
+
+      <!-- Imagen derecha -->
+      <div class="footer-right">
+        <img src="img/fondo.png" alt="Logo SIED" class="footer-logo">
+      </div>
+    </div>
+  </footer>
+    <!-- Tu JS -->
+    <script src="js/boton.js"></script> <!-- en este JS tengo los codigos del boton-->
+    <script src="js/acordeon.js"></script>  
+   
+
+
+</body>
+
+</html>

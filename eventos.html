@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Eventos</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.8/main.min.css" rel="stylesheet">
+
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.8/main.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Roboto:ital,wght@0,400;1,700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tus CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/slider-eventos.css">
+    <link rel="stylesheet" href="css/tabla-calendario.css">
+
+    <!-- Seguridad JS -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+
+</head>
+
+<!--comienzo del body, cuerpo de la pagina-->
+
+<body>
+ 
+     
+    <!-- HEADER SUPERIOR -->
+    <header id="main-header">
+      <div class="header-content">
+        <a href="index.html" class="logo">
+          <img src="img/Logo.png" alt="Logo de la oficina">
+        </a>
+        <h1 class="office-name">Gabinete de Ciencias Planetarias</h1>
+      </div>
+    </header>
+
+
+    <!--barra de navegacion-->
+    
+      <nav id="main-nav">
+        <div class="container nav-bar">
+          <a href="index.html" class="navItem">Inicio</a>
+          <a href="eventos.html" class="navItem">Eventos</a>
+          <div class="dropdown">
+            <a href="#" class="navItem dropbtn">Recursos</a>
+            <div class="dropdown-content">
+              <a href="glosario.html">Glosario</a>
+              <a href="links.html">Link de interes</a>
+              <a href="cielo.html">Mapas del cielo</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <a href="#" class="navItem dropbtn">Astronomía</a>
+            <div class="dropdown-content">
+              <a href="eclipses.html">Eclipses</a>
+              <a href="fases-lunares.html">Fases Lunares</a>
+            </div>
+          </div>
+          <a href="creditos.html" class="navItem">Créditos</a>
+        </div>
+      </nav>
+
+
+    <!-- Sección de encabezado llamativo -->
+    <section id="hero-section" class="text-center mt-5">
+      <h1 class="hero-title">Eventos del mes</h1>
+    </section>
+
+
+
+    <!-- inicio div container responsivo -->
+    <div class="container-global"> 
+
+        <div class="slider-wrapper-eventos">
+            <div class="container-eventos">
+                <div class="slide-eventos" id="slide-container-eventos"></div>
+                <div class="button-eventos">
+                    <button class="prev-eventos"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="next-eventos"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+      <br>
+      <br>
+        <!-- ===================== FASES LUNARES (con bdd en google sheets) ===================== -->
+
+          <div id="text-fases">
+            <h1 class="text-white mb-4 text-center">Información de las próximas lunas</h1>
+          </div>
+
+          <section class="noticias-lunares container mt-5" id="contenedor-fases">
+            <!---Aca tengo el archivo luna.js-->
+            <!-- Aquí el JS inyectará las fases -->
+          </section>
+
+    </div> <!--fin del container principal-->
+
+
+
+<!-- seccion donde se encuentra la tabla y el calendario-->
+
+<!-- ===================== CALENDARIO / LISTA DE EVENTOS ===================== -->
+    <section class="container mt-5 mb-5">
+        <section id="hero-section" class="text-center mt-5">
+          <h1 class="hero-title">Calendario Astronómico</h1>
+          <!-- <p class="hero-subtitle">Aca hay que poner un subtitulo</p> -->
+        </section>
+        
+      <div class="row">
+        <!-- Columna izquierda: tabla -->
+        <div class="col-md-6 mb-4">
+          <table class="table table-dark table-hover border-warning">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Evento</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-eventos">
+              <!-- Aquí se insertan dinámicamente las filas desde la BDD -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Columna derecha: calendario -->
+        <div class="col-md-6 mb-4">
+          <div id="calendar" class="p-3 rounded bg-dark text-white border-warning"></div>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- FullCalendar CSS y JS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+
+<!---footer con boton deslizante al principio-->
+
+  <!-- Botón volver arriba -->
+  <button id="back-to-top-btn" title="Volver arriba">↑</button>
+
+  <footer id="main-footer" class="footer w-100">
+    <div class="footer-container">
+      <!-- Texto izquierda -->
+      <div class="footer-text">
+        <p>Gabinete de Ciencias Planetarias</p>
+        <p>FCEFyN | Universidad Nacional de San Juan</p>
+      </div>
+
+      <!-- Imagen derecha -->
+      <div class="footer-right">
+        <img src="img/fondo.png" alt="Logo SIED" class="footer-logo">
+      </div>
+    </div>
+  </footer>
+  
+    <!-- Tu JS -->
+
+    <script src="js/boton.js"></script> <!-- en este JS tengo los codigos del boton-->
+    <script src="js/calendario.js"></script>
+    <script src="js/slider-eventos.js"></script>
+    <script src="js/luna.js"></script>
+
+
+
+
+
+
+</body>
+
+
+</html>
+
+
+    
+
+
+ 
